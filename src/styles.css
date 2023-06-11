@@ -1,4 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
-/* @tailwind base; */
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
+
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: Cabin, Roboto, Arial, Helvetica, sans-serif;
+  background-image: url('/assets/background.webp');
+  background-size: cover;
+  background-position-x: right;
+  height: 100vh;
+  margin: 0;
+  text-shadow: black -5px 2px 0px;
+}
+
+.logo-style {
+  @apply uppercase text-6xl text-[#f8da27];
+  font-family: Cabin;
+  font-size:
+}
