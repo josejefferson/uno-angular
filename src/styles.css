@@ -11,11 +11,13 @@ body {
   background-position-x: right;
   height: 100vh;
   margin: 0;
-  text-shadow: black -5px 2px 0px;
 }
 
 .logo-style {
   @apply uppercase text-6xl text-[#f8da27];
   font-family: Cabin;
-  font-size:
+  text-shadow: black -5px 2px 0px;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

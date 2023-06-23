@@ -1,0 +1,98 @@
+.uno-card {
+  --red: #d72600;
+  --blue: #0956bf;
+  --green: #379711;
+  --yellow: #ecd407;
+  width: calc(var(--size, 1) * 70px);
+  height: calc(var(--size, 1) * 100px);
+  border: white calc(var(--size, 1) * 5px) solid;
+  box-shadow: black 0 0 0 calc(var(--size, 1) * 1px);
+  margin: calc(var(--size, 1) * 1px);
+  border-radius: calc(var(--size, 1) * 10px);
+  background: var(--color, black);
+  font-family: 'Font Awesome 6 Free', sans-serif;
+  flex-direction: column;
+  display: flex;
+  padding-left: calc(var(--size, 1) * 5px);
+  padding-right: calc(var(--size, 1) * 5px);
+  box-sizing: border-box;
+  font-weight: bold;
+  user-select: none;
+  line-height: initial;
+
+  & .number {
+    display: flex;
+    color: white;
+    font-size: calc(var(--size, 1) * 12px);
+  }
+
+  & .number-normal {
+    padding-top: calc(var(--size, 1) * 3px);
+  }
+
+  & .uno-card-middle {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  & .uno-card-middle {
+    & .number-middle {
+      font-size: calc(var(--size, 1) * 24px);
+      background-color: white;
+      width: calc(var(--size, 1) * 50px);
+      height: calc(var(--size, 1) * 50px);
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      color: var(--color, black);
+      z-index: 1;
+    }
+  }
+
+  & .number-inverted {
+    padding-top: calc(var(--size, 1) * 3px);
+    transform: rotate(180deg);
+  }
+
+  &.is-wild {
+    & .wild {
+      position: absolute;
+      border: calc(var(--size, 1) * 28px) solid;
+      border-radius: 50%;
+      border-top-color: var(--red);
+      border-right-color: var(--blue);
+      border-bottom-color: var(--green);
+      border-left-color: var(--yellow);
+      outline: white calc(var(--size, 1) * 2px) solid;
+    }
+  }
+}
+
+.uno-cards-pile {
+  display: flex;
+  padding-right: 33px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.uno-cards-pile.disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.uno-card-container {
+  width: 2px;
+}
+
+.offline {
+  opacity: 0.6;
+}
+
+.vez {
+  color: yellow;
+  font-size: 20px;
+}

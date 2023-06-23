@@ -1,0 +1,13 @@
+<div
+  class="uno-card"
+	[style.--size]="size"
+	style.--color="var(--{{color}})"
+	[class.is-wild]="wild"
+>
+  <div class="number number-normal">{{icon}}</div>
+  <div class="uno-card-middle">
+    <div class="wild"></div>
+    <div class="number number-middle">{{icon}}</div>
+  </div>
+  <div class="number number-inverted">{{icon}}</div>
+</div>

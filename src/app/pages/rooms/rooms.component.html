@@ -1,1 +1,19 @@
-<h1 class="logo-style">UNO</h1>
+<div class="md:container md:mx-auto px-5 py-4">
+  <h1 class="logo-style mb-4 text-center">SALAS</h1>
+
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
+    <div
+      class="card w-full bg-red-800/90 text-primary-content rounded-md hover:bg-gray-800 transition-all cursor-pointer"
+      *ngFor="let i of [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+    >
+      <div class="card-body p-3">
+        <h2 class="card-title">Jefferson</h2>
+        <p>#00000000</p>
+        <p>5/6 jogadores</p>
+        <div class="card-actions justify-center">
+          <button class="btn btn-outline btn-sm btn-info">Entrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
