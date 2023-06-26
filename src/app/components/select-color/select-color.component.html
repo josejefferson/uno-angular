@@ -1,0 +1,10 @@
+<div class="bg text-center p-10" *ngIf="!!select">
+  <h1 class="text-5xl mb-10">Selecione uma cor</h1>
+  <div class="flex gap-3 mb-10 flex-wrap justify-center">
+    <uno-card class="uno-card" (click)="s(0)" [card]="{ color: 0, icon: '' }" [size]="1.5" />
+    <uno-card class="uno-card" (click)="s(1)" [card]="{ color: 1, icon: '' }" [size]="1.5" />
+    <uno-card class="uno-card" (click)="s(2)" [card]="{ color: 2, icon: '' }" [size]="1.5" />
+    <uno-card class="uno-card" (click)="s(3)" [card]="{ color: 3, icon: '' }" [size]="1.5" />
+  </div>
+  <button class="btn btn-error btn-outline" (click)="s(false)">Cancelar</button>
+</div>

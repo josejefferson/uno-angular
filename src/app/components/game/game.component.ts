@@ -28,6 +28,7 @@ export class GameComponent {
   @Input() me!: Player
   @Input() socket!: Socket
   @Input() game!: Game
+  selectColor?: (color: number|false) => any
   playerMap?: (typeof PLAYER_MAPS)[number]
 
   ngOnInit() {
@@ -37,9 +38,13 @@ export class GameComponent {
     ;(window as any).me = this.me
   }
 
-  jogar(index: number, card: ICard) {
+  async jogar(index: number, card: ICard) {
     if (card.color === -1) {
-      const result = prompt('Selecione a cor\n\n0: Vermelho\n1: Amarelo\n2: Azul\n3: Verde')
+      const result = await new Promise<number|false>((resolve) => {
+        this.selectColor = resolve
+      })
+      this.selectColor = undefined
+      // const result = prompt('Selecione a cor\n\n0: Vermelho\n1: Amarelo\n2: Azul\n3: Verde')
       if (!result) return
       this.socket.emit('game:jogar', index, result)
     } else {
