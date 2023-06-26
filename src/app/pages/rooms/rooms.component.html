@@ -13,10 +13,12 @@
     class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2"
   >
     <a
-      href="/room?id={{room.id}}"
+      href="/room?id={{ room.id }}"
       class="room border-{{ seedColor(room.id) }}-900"
       *ngFor="let room of rooms"
     >
+      <div class="w-full h-full flex items-center justify-center text-2xl absolute">Entrar</div>
+
       <div class="content bg-{{ seedColor(room.id) }}-800">
         <div class="room-id">#{{ room.id }}</div>
         <img src="/assets/uno-logo.svg" alt="Logo UNO" class="w-[100px] drop-shadow-2xl mx-auto" />
@@ -25,8 +27,6 @@
           {{ room.currentGameIndex + 1 }}º jogo
         </p>
       </div>
-
-      <div class="h-full flex items-center justify-center text-2xl">Entrar</div>
     </a>
 
     <button class="new-room" (click)="createRoom()" [disabled]="creatingRoom">

@@ -3,6 +3,7 @@ import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
 import { Player } from 'src/app/common/player'
 import { Room } from 'src/app/common/room'
+import { zoomAnimation } from 'src/app/helpers/animations'
 import { ICard } from 'src/app/types/cards'
 
 const PLAYER_MAPS = [
@@ -19,7 +20,8 @@ const PLAYER_MAPS = [
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.css'],
+  animations: [zoomAnimation]
 })
 export class GameComponent {
   @Input() room!: Room
@@ -31,32 +33,30 @@ export class GameComponent {
   ngOnInit() {
     const playersLength = this.players()?.length > 7 ? 7 : this.players()?.length
     this.playerMap = PLAYER_MAPS[playersLength ?? 0]
+    ;(window as any).room = this.room
+    ;(window as any).me = this.me
   }
 
   jogar(index: number, card: ICard) {
-    // if (card.color === -1)
-    //   Swal.fire({
-    //     title: 'Selecione a cor',
-    //     input: 'radio',
-    //     inputOptions: {
-    //       [0]: 'Vermelho',
-    //       [1]: 'Amarelo',
-    //       [2]: 'Azul',
-    //       [3]: 'Verde'
-    //     }
-    //   }).then((result) => {
-    //     if (!result.value) return
-    //     dispatch('jogar', [index, result.value])
-    //   })
-    // else dispatch('jogar', [index])
+    if (card.color === -1) {
+      const result = prompt('Selecione a cor\n\n0: Vermelho\n1: Amarelo\n2: Azul\n3: Verde')
+      if (!result) return
+      this.socket.emit('game:jogar', index, result)
+    } else {
+      this.socket.emit('game:jogar', index)
+    }
   }
 
   comprar() {
-    // dispatch('comprar')
+    this.socket.emit('game:comprar')
+    this.game.comprou = true
+    this.socket.on('game:setJogador', () => {
+      this.game.comprou = false
+    })
   }
 
   passar() {
-    // dispatch('passar')
+    this.socket.emit('game:passar')
   }
 
   getPlayer(i: number) {
@@ -68,7 +68,7 @@ export class GameComponent {
   }
 
   getQuantidadeCartas(i: number) {
-    const playerIndex = this.players(false)[this.playerMap![i]]?.index ?? -1
+    const playerIndex = this.players()[this.playerMap![i]]?.index ?? -1
     return this.game.playerCardsCount[playerIndex]
   }
 

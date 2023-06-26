@@ -111,56 +111,56 @@
 
 ::ng-deep .slots-top .slot .cards-container .cards,
 ::ng-deep .slots-top .slot .avatar {
-  --rotate: 180deg;
-  --translateY: -10px;
+  @apply rotate-180 translate-y-[-10px];
 }
 
 ::ng-deep .slots-left .slot .cards-container .cards,
 ::ng-deep .slots-left .slot .avatar,
 ::ng-deep .slots-left .slot .name {
-  --rotate: 90deg;
+  @apply rotate-90;
 }
 
 ::ng-deep .slots-left .slot .cards-container .cards,
 ::ng-deep .slots-left .slot .avatar {
-  --translateX: -10px;
+  @apply translate-x-[-10px];
 }
 
 ::ng-deep .slots-right .slot .cards-container .cards,
 ::ng-deep .slots-right .slot .avatar,
 ::ng-deep .slots-right .slot .name {
-  --rotate: -90deg;
+  @apply -rotate-90;
 }
 
 ::ng-deep .slots-right .slot .cards-container .cards,
 ::ng-deep .slots-right .slot .avatar {
-  --translateX: 10px;
+  @apply translate-x-[10px];
 }
 
 .game-rotation {
-  --scale: 1;
+  @apply scale-[1];
   width: 300px;
   position: absolute;
   margin-bottom: 65px;
   opacity: 0.3;
   animation: rotate 10s linear infinite;
+  pointer-events: none;
 }
 
 .game-rotation.inverted {
-  --scale: -1;
+  @apply scale-[-1];
   animation-direction: reverse;
 }
 
 @keyframes rotate {
   from {
-    transform: rotate(0deg) scaleX(var(--scale, 1));
+    transform: rotate(0deg) scaleX(var(--tw-scale-x, 1));
   }
 
   50% {
-    transform: rotate(180deg) scaleX(var(--scale, 1));
+    transform: rotate(180deg) scaleX(var(--tw-scale-x, 1));
   }
 
   to {
-    transform: rotate(360deg) scaleX(var(--scale, 1));
+    transform: rotate(360deg) scaleX(var(--tw-scale-x, 1));
   }
 }

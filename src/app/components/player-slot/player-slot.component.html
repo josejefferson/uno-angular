@@ -2,19 +2,21 @@
   <div class="cards-container">
     <div class="cards">
       <div class="uno-card-container" *ngFor="let i of cards()">
-        <uno-card [back]="true" [size]="0.5" />
+        <uno-card [@zoom] [back]="true" [size]="0.5" />
       </div>
     </div>
   </div>
   <div class="avatar-container">
     <img
-      class="avatar w-0 md:w-[50px] xl:w-[100px]"
+      class="avatar w-0 sm:w-[50px] xl:w-[100px]"
       [class.vez]="vezDele"
       src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ player?.id }}"
       alt="Avatar"
     />
   </div>
   <div class="name-container">
-    <div class="name" [class.vez]="vezDele">{{ player?.name || '(Sem nome)' }}</div>
+    <div class="name" [class.vez]="vezDele">
+      {{ player?.name || '(Sem nome)' }} {{ !player?.online ? '(offline)' : '' }}
+    </div>
   </div>
 </div>

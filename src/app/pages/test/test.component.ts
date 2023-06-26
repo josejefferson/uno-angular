@@ -1,25 +1,12 @@
-import { animate, keyframes, state, style, transition, trigger } from '@angular/animations'
 import { Component } from '@angular/core'
 import { ToastrService } from 'ngx-toastr'
+import { zoomAnimation } from 'src/app/helpers/animations'
 
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
   styleUrls: ['./test.component.css'],
-  animations: [
-    trigger('zoom', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'scale(0)', width: 0 }),
-        animate(100, style({ width: '*' })),
-        animate(200, style({ opacity: 1, transform: 'scale(1)' }))
-      ]),
-      transition(':leave', [
-        style({ opacity: 1, transform: 'scale(1)', width: '*' }),
-        animate(200, style({ opacity: 0, transform: 'scale(10)' })),
-        animate(100, style({ width: 0 }))
-      ])
-    ])
-  ]
+  animations: [zoomAnimation]
 })
 export class TestComponent {
   cards: number[] = Array(10)

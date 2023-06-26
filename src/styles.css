@@ -5,7 +5,7 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   --translate: 0, 0;
   --translate3d: 0, 0, 0;
   --translateX: 0;
@@ -26,6 +26,10 @@
     scale(var(--scale)) scale3d(var(--scale3d)) scaleX(var(--scaleX)) scaleY(var(--scaleY))
     scaleZ(var(--scaleZ)) rotate(var(--rotate)) rotate3d(var(--rotate3d)) rotateX(var(--rotateX))
     rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
+} */
+
+[hidden] {
+  display: none;
 }
 
 ::-webkit-scrollbar {

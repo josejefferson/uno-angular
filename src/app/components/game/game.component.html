@@ -2,12 +2,14 @@
   <div class="slots-left flex flex-col">
     <app-player-slot
       class="flex-1"
+      *ngIf="getPlayer(1)"
       [player]="getPlayer(1)"
       [vezDele]="getVezDele(1)"
       [quantidadeCartas]="getQuantidadeCartas(1)"
     />
     <app-player-slot
       class="flex-1"
+      *ngIf="getPlayer(0)"
       [player]="getPlayer(0)"
       [vezDele]="getVezDele(0)"
       [quantidadeCartas]="getQuantidadeCartas(0)"
@@ -18,12 +20,14 @@
     <div class="flex flex-row slots-top">
       <app-player-slot
         class="flex-1"
+        *ngIf="getPlayer(2)"
         [player]="getPlayer(2)"
         [vezDele]="getVezDele(2)"
         [quantidadeCartas]="getQuantidadeCartas(2)"
       />
       <app-player-slot
         class="flex-1"
+        *ngIf="getPlayer(3)"
         [player]="getPlayer(3)"
         [vezDele]="getVezDele(3)"
         [quantidadeCartas]="getQuantidadeCartas(3)"
@@ -39,7 +43,12 @@
         />
 
         <h1>
-          É a {{ game.jogadorAtual.id === me.id ? 'sua vez' : 'vez de ' + game.jogadorAtual.name }}
+          É a
+          {{
+            game.jogadorAtual.id === me.id
+              ? 'sua vez'
+              : 'vez de ' + (game.jogadorAtual.name || '(Sem nome)')
+          }}
         </h1>
 
         <uno-card [card]="game.descarteUltimaCarta!" [size]="2" />
@@ -52,10 +61,19 @@
 
         <button
           class="btn btn-success mt-2"
-          (click)="(passar)"
+          (click)="passar()"
           [disabled]="game.jogadorAtual.id !== me.id"
+          [hidden]="!game.comprou"
         >
           PASSAR
+        </button>
+        <button
+          class="btn btn-success mt-2"
+          (click)="comprar()"
+          [disabled]="game.jogadorAtual.id !== me.id"
+          [hidden]="game.comprou"
+        >
+          COMPRAR ({{ game.baralhoCount }})
         </button>
       </div>
     </div>
@@ -65,13 +83,13 @@
         <div class="my-cards-container" [class.disabled]="game.jogadorAtual.id !== me.id">
           <div class="my-cards">
             <div
-                class="uno-card"
-                (click)="jogar(i, card)"
-                [class.naoPode]="!game.podeJogar(card)"
-                *ngFor="let card of me.cards || []; index as i"
-              >
-                <uno-card [card]="card" />
-              </div>
+              class="uno-card"
+              (click)="jogar(i, card)"
+              [class.naoPode]="!game.podeJogar(card)"
+              *ngFor="let card of me.cards || []; index as i"
+            >
+              <uno-card [@zoom] [card]="card" />
+            </div>
           </div>
         </div>
       </div>
@@ -81,12 +99,14 @@
   <div class="flex flex-col slots-right">
     <app-player-slot
       class="flex-1"
+      *ngIf="getPlayer(4)"
       [player]="getPlayer(4)"
       [vezDele]="getVezDele(4)"
       [quantidadeCartas]="getQuantidadeCartas(4)"
     />
     <app-player-slot
       class="flex-1"
+      *ngIf="getPlayer(5)"
       [player]="getPlayer(5)"
       [vezDele]="getVezDele(5)"
       [quantidadeCartas]="getQuantidadeCartas(5)"

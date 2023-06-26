@@ -9,11 +9,14 @@
   <div class="players">
     <div
       class="player bg-{{ seedColor(player.id) }}-900"
-      [class.border-yellow-500]="!!player.isOwner"
+      [class.owner]="player.id === room.owner"
       [class.opacity-25]="!player.online"
       *ngFor="let player of room.players"
     >
-      <div class="player-name">{{ player.name || '(Sem nome)' }}</div>
+      <div class="player-name">
+        <span *ngIf="player.score">({{ player.score }}) </span>
+        <span>{{ player.name || '(Sem nome)' }}</span>
+      </div>
       <img
         class="block"
         src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ player.id }}"

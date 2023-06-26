@@ -30,7 +30,7 @@ export class UnoCardComponent {
   ngOnInit() {
     if (this.back) this.color = 'gray'
     if (!this.card) return
-    const color = this.back ? 'gray' : COLORS[this.card.wildColor || this.card.color]
+    const color = this.back ? 'gray' : COLORS[this.card.wildColor ?? this.card.color]
     this.color = color
   }
 }

@@ -17,6 +17,10 @@
 	transition-all;
 }
 
+.players .player.owner {
+	@apply border-yellow-500;
+}
+
 .players .player .player-name {
   @apply text-2xl
 	text-center

@@ -21,6 +21,9 @@ interface IRoom {
 export class RoomsComponent {
   seedColor = seedColor
 
+  name: string = localStorage.getItem('name') || ''
+  sessionID: string = localStorage.getItem('sessionID') || Math.random().toString()
+
   rooms: IRoom[] = []
   loading = true
   creatingRoom = false
@@ -47,7 +50,7 @@ export class RoomsComponent {
 
   createRoom() {
     this.creatingRoom = true
-    this.http.post(env.api + '/api/room/', {}).subscribe({
+    this.http.post(env.api + `/api/room/?sessionID=${this.sessionID}&name=${this.name}`, {}).subscribe({
       next: () => this.getRooms(true),
       error: (err) => alert(err.message),
       complete: () => (this.creatingRoom = false)
