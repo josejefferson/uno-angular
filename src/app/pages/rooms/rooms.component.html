@@ -1,19 +1,39 @@
-<div class="md:container md:mx-auto px-5 py-4">
+<div class="container max-w-6xl mx-auto px-5 py-4">
   <h1 class="logo-style mb-4 text-center">SALAS</h1>
 
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2">
-    <div
-      class="card w-full bg-red-800/90 text-primary-content rounded-md hover:bg-gray-800 transition-all cursor-pointer"
-      *ngFor="let i of [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]"
+  <span
+    *ngIf="loading"
+    class="loading loading-spinner loading-lg block m-auto text-white mb-4"
+  ></span>
+
+  <p *ngIf="!!error">{{ error.message }}</p>
+
+  <div
+    *ngIf="!loading && !error"
+    class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2"
+  >
+    <a
+      href="/room?id={{room.id}}"
+      class="room border-{{ seedColor(room.id) }}-900"
+      *ngFor="let room of rooms"
     >
-      <div class="card-body p-3">
-        <h2 class="card-title">Jefferson</h2>
-        <p>#00000000</p>
-        <p>5/6 jogadores</p>
-        <div class="card-actions justify-center">
-          <button class="btn btn-outline btn-sm btn-info">Entrar</button>
-        </div>
+      <div class="content bg-{{ seedColor(room.id) }}-800">
+        <div class="room-id">#{{ room.id }}</div>
+        <img src="/assets/uno-logo.svg" alt="Logo UNO" class="w-[100px] drop-shadow-2xl mx-auto" />
+        <p class="mt-3">{{ room.players.length }}/∞ jogadores</p>
+        <p class="mt-3" *ngIf="room.currentGameIndex !== -1">
+          {{ room.currentGameIndex + 1 }}º jogo
+        </p>
       </div>
-    </div>
+
+      <div class="h-full flex items-center justify-center text-2xl">Entrar</div>
+    </a>
+
+    <button class="new-room" (click)="createRoom()" [disabled]="creatingRoom">
+      <i class="fas fa-plus text-6xl" *ngIf="!creatingRoom"></i>
+      <div class="text-2xl mt-4" *ngIf="!creatingRoom">Nova sala</div>
+      <i class="fas fa-circle-notch fa-spin text-6xl" *ngIf="creatingRoom"></i>
+      <div class="text-2xl mt-4" *ngIf="creatingRoom">Criando...</div>
+    </button>
   </div>
 </div>

@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {}
   },
-  plugins: [require('daisyui')],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     themes: true,
     styled: true,
@@ -13,5 +13,16 @@ module.exports = {
     utils: true,
     logs: false,
     rtl: false
-  }
+  },
+  safelist: [
+    {
+      pattern:
+        /bg-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(700|800|900)/,
+      variants: ['hover']
+    },
+    {
+      pattern:
+        /border-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(900)/
+    }
+  ]
 }

@@ -1,6 +1,18 @@
-<uno-card color="red" icon="1" />
-<uno-card color="green" icon="2" />
-<uno-card color="blue" icon="3" />
-<uno-card color="yellow" icon="4" />
-<uno-card icon="+4" [wild]="true" />
-<uno-card icon=" " [wild]="true" />
+<div class="flex gap-1">
+  <!-- <uno-card color="red" icon="1" />
+  <uno-card color="green" icon="2" />
+  <uno-card color="blue" icon="3" />
+  <uno-card color="yellow" icon="4" />
+  <uno-card icon="+4" />
+  <uno-card icon=" " />
+  <uno-card icon="REVERSE" />
+  <uno-card icon="SKIP" /> -->
+</div>
+
+<div class="flex gap-1">
+  <div [@zoom] *ngFor="let card of cards; index as i">
+    <!-- <uno-card color="red" [icon]="card.toString()" (click)="removeCard(i)" /> -->
+  </div>
+</div>
+
+<button (click)="addCard()">ADD</button>

@@ -1,0 +1,97 @@
+<main class="game-container flex flex-row" style="height: 100vh" *ngIf="game && playerMap">
+  <div class="slots-left flex flex-col">
+    <app-player-slot
+      class="flex-1"
+      [player]="getPlayer(1)"
+      [vezDele]="getVezDele(1)"
+      [quantidadeCartas]="getQuantidadeCartas(1)"
+    />
+    <app-player-slot
+      class="flex-1"
+      [player]="getPlayer(0)"
+      [vezDele]="getVezDele(0)"
+      [quantidadeCartas]="getQuantidadeCartas(0)"
+    />
+  </div>
+
+  <div class="flex flex-col flex-1 overflow-hidden">
+    <div class="flex flex-row slots-top">
+      <app-player-slot
+        class="flex-1"
+        [player]="getPlayer(2)"
+        [vezDele]="getVezDele(2)"
+        [quantidadeCartas]="getQuantidadeCartas(2)"
+      />
+      <app-player-slot
+        class="flex-1"
+        [player]="getPlayer(3)"
+        [vezDele]="getVezDele(3)"
+        [quantidadeCartas]="getQuantidadeCartas(3)"
+      />
+    </div>
+
+    <div class="flex flex-row flex-1">
+      <div class="slot slot-middle flex-1 flex flex-col">
+        <img
+          src="/assets/arrow-rotate.svg"
+          class="game-rotation"
+          [class.inverted]="game.direcao === -1"
+        />
+
+        <h1>
+          É a {{ game.jogadorAtual.id === me.id ? 'sua vez' : 'vez de ' + game.jogadorAtual.name }}
+        </h1>
+
+        <uno-card [card]="game.descarteUltimaCarta!" [size]="2" />
+
+        <!-- <app-baralho
+          [quantidade]="game.baralhoCount"
+          (comprar)="comprar"
+          [disabled]="game.jogadorAtual.id !== player.id"
+        /> -->
+
+        <button
+          class="btn btn-success mt-2"
+          (click)="(passar)"
+          [disabled]="game.jogadorAtual.id !== me.id"
+        >
+          PASSAR
+        </button>
+      </div>
+    </div>
+
+    <div class="flex flex-row">
+      <div class="w-full slot">
+        <div class="my-cards-container" [class.disabled]="game.jogadorAtual.id !== me.id">
+          <div class="my-cards">
+            <div
+                class="uno-card"
+                (click)="jogar(i, card)"
+                [class.naoPode]="!game.podeJogar(card)"
+                *ngFor="let card of me.cards || []; index as i"
+              >
+                <uno-card [card]="card" />
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col slots-right">
+    <app-player-slot
+      class="flex-1"
+      [player]="getPlayer(4)"
+      [vezDele]="getVezDele(4)"
+      [quantidadeCartas]="getQuantidadeCartas(4)"
+    />
+    <app-player-slot
+      class="flex-1"
+      [player]="getPlayer(5)"
+      [vezDele]="getVezDele(5)"
+      [quantidadeCartas]="getQuantidadeCartas(5)"
+    />
+  </div>
+</main>
+
+<!-- <pre>{{game|json}}</pre> -->

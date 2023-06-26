@@ -1,0 +1,166 @@
+.game-container {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+
+.players {
+  width: 200px;
+  padding: 5px;
+}
+
+.main-game {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.my-cards-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.my-cards-container.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.my-cards-container > .my-cards {
+  max-width: 100%;
+  overflow-x: auto;
+  display: flex;
+  padding: 10px;
+}
+
+.my-cards-container > .my-cards > .uno-card {
+  display: flex;
+  margin-right: 3px;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.my-cards-container:not(.disabled) > .my-cards > .uno-card:hover {
+  transform: scale(1.1);
+}
+
+.my-cards-container:not(.disabled) > .my-cards > .uno-card:active {
+  transform: scale(0.9);
+}
+
+.my-cards-container:not(.disabled) > .my-cards > .uno-card.naoPode {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* NOVOS ESTILOS */
+.slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slot.empty {
+  display: none;
+}
+
+::ng-deep .cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep .slot .name {
+  position: absolute;
+  white-space: nowrap;
+}
+
+::ng-deep .slots-top .slot {
+  justify-content: flex-start;
+  flex-direction: column !important;
+}
+
+::ng-deep .slots-top .slot .cards-container {
+  width: 100%;
+  height: 50px;
+}
+
+::ng-deep .slots-left .slot {
+  justify-content: flex-start;
+}
+
+::ng-deep .slots-right .slot {
+  justify-content: flex-start;
+  flex-direction: row-reverse;
+}
+
+::ng-deep .slots-left .slot .cards-container,
+::ng-deep .slots-right .slot .cards-container {
+  width: 50px;
+  height: 100%;
+}
+
+::ng-deep .slots-top .slot .cards-container .cards,
+::ng-deep .slots-top .slot .avatar {
+  --rotate: 180deg;
+  --translateY: -10px;
+}
+
+::ng-deep .slots-left .slot .cards-container .cards,
+::ng-deep .slots-left .slot .avatar,
+::ng-deep .slots-left .slot .name {
+  --rotate: 90deg;
+}
+
+::ng-deep .slots-left .slot .cards-container .cards,
+::ng-deep .slots-left .slot .avatar {
+  --translateX: -10px;
+}
+
+::ng-deep .slots-right .slot .cards-container .cards,
+::ng-deep .slots-right .slot .avatar,
+::ng-deep .slots-right .slot .name {
+  --rotate: -90deg;
+}
+
+::ng-deep .slots-right .slot .cards-container .cards,
+::ng-deep .slots-right .slot .avatar {
+  --translateX: 10px;
+}
+
+.game-rotation {
+  --scale: 1;
+  width: 300px;
+  position: absolute;
+  margin-bottom: 65px;
+  opacity: 0.3;
+  animation: rotate 10s linear infinite;
+}
+
+.game-rotation.inverted {
+  --scale: -1;
+  animation-direction: reverse;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg) scaleX(var(--scale, 1));
+  }
+
+  50% {
+    transform: rotate(180deg) scaleX(var(--scale, 1));
+  }
+
+  to {
+    transform: rotate(360deg) scaleX(var(--scale, 1));
+  }
+}

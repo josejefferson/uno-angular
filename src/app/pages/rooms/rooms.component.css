@@ -1,0 +1,52 @@
+.new-room {
+  @apply transition-all
+  border-8
+  border-red-900
+  hover:border-red-800
+  aspect-[3/4]
+  active:scale-90
+  bg-red-800
+  hover:bg-red-700;
+}
+
+.new-room:disabled {
+  @apply border-gray-900
+  bg-gray-800;
+}
+
+.room {
+  @apply transition-all
+  border-8
+  text-center
+  aspect-[3/4]
+  active:scale-90
+  bg-black
+  relative;
+}
+
+.room .content {
+  @apply p-3
+  w-full
+  h-full
+  origin-left
+  transition-all
+  absolute
+  flex
+  flex-col
+  justify-between;
+}
+
+.room .room-id {
+  @apply bg-white
+  shadow-[4px_4px_black]
+  w-fit
+  mx-auto
+  text-black
+  p-1
+  px-2
+  transition-all;
+}
+
+.room:hover > .content {
+  transform: perspective(1200px) translateZ(0px) translateX(0px) translateY(0px) rotateY(-105deg);
+}

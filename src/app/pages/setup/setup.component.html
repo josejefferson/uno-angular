@@ -1,0 +1,47 @@
+<div class="w-96 mx-auto py-4">
+  <h1 class="logo-style mb-4 text-center">Seus dados</h1>
+
+  <div class="form-control w-full">
+    <label class="label">
+      <span class="label-text">Seu nome</span>
+    </label>
+    <input
+      #nameInput
+      type="text"
+      class="input input-bordered w-full"
+      [value]="name"
+      (keyup)="setName(nameInput.value)"
+    />
+  </div>
+
+  <div class="form-control w-full">
+    <label class="label">
+      <span class="label-text">ID de sessão</span>
+    </label>
+    <div class="join">
+      <input
+        #sessionIDInput
+        type="text"
+        class="input input-bordered w-full join-item"
+        [value]="sessionID"
+        (keyup)="setSessionID(sessionIDInput.value)"
+      />
+      <button class="btn join-item" (click)="generateRandomSessionID()"><i class="fas fa-dice"></i></button>
+    </div>
+  </div>
+
+  <div class="border-white border-[6px] shadow-[4px_4px_black] p-3 pb-0 text-white w-[150px] my-3">
+    <div class="text-2xl text-center mb-3">
+      {{ name || '(Sem nome)' }}
+      <img
+        class="block"
+        src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ sessionID }}"
+        alt="Avatar"
+      />
+    </div>
+  </div>
+
+  <p>Para trocar seu avatar, altere o ID de sessão</p>
+
+  <button class="btn btn-primary mt-3" routerLink="/rooms">Continuar</button>
+</div>

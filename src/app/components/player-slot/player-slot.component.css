@@ -1,0 +1,51 @@
+.uno-card-container {
+  width: 2px;
+}
+
+.offline {
+  opacity: 0.6;
+}
+
+.vez {
+  color: yellow;
+  font-size: 20px;
+}
+
+.slot {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.slot.empty {
+  display: none;
+}
+
+.cards-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+}
+
+.cards {
+  position: absolute;
+  display: flex;
+  padding-right: 16px;
+  /* TODO: usar variável para calcular quantidade de cartas e depois o padding-right */
+}
+
+.cards .uno-card-container {
+  width: 20px !important;
+  /* TODO: usar variável para calcular quantidade de cartas e depois o width */
+}

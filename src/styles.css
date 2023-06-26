@@ -1,16 +1,171 @@
+@import 'node_modules/ngx-toastr/toastr.css';
 @import url('https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+* {
+  --translate: 0, 0;
+  --translate3d: 0, 0, 0;
+  --translateX: 0;
+  --translateY: 0;
+  --translateZ: 0;
+  --scale: 1, 1;
+  --scale3d: 1, 1, 1;
+  --scaleX: 1;
+  --scaleY: 1;
+  --scaleZ: 1;
+  --rotate: 0;
+  --rotate3d: 0, 0, 0, 0;
+  --rotateX: 0;
+  --rotateY: 0;
+  --rotateZ: 0;
+  transform: translate(var(--translate)) translate3d(var(--translate3d))
+    translateX(var(--translateX)) translateY(var(--translateY)) translateZ(var(--translateZ))
+    scale(var(--scale)) scale3d(var(--scale3d)) scaleX(var(--scaleX)) scaleY(var(--scaleY))
+    scaleZ(var(--scaleZ)) rotate(var(--rotate)) rotate3d(var(--rotate3d)) rotateX(var(--rotateX))
+    rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  height: 56px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  background-color: hsl(0, 0%, 67%);
+}
+
+::-webkit-scrollbar-corner {
+  background: rgba(0, 0, 0, 0);
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Bold italic.otf');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Bold.otf');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial DemiBold Italic.otf');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial DemiBold.otf');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial ExtraBold Italic.otf');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial ExtraBold.otf');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial ExtraLight Italic.otf');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial ExtraLight.otf');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Italic.otf');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Light Italic.otf');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Light.otf');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Medium Italic.otf');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Medium.otf');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'TT Chocolates';
+  src: url('/assets/fonts/TT Chocolates Trial Regular.otf');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+
 body {
-  font-family: Cabin, Roboto, Arial, Helvetica, sans-serif;
-  background-image: url('/assets/background.webp');
-  background-size: cover;
-  background-position-x: right;
-  height: 100vh;
+  font-family: 'TT Chocolates', Roboto, Arial, Helvetica, sans-serif !important;
+  /* background-image: url('/assets/background.webp'); */
+  /* background-size: cover; */
+  /* background-position-x: right; */
+  min-height: 100vh;
   margin: 0;
+  /* @apply bg-gradient-to-r from-yellow-600 to-red-600; */
 }
 
 .logo-style {

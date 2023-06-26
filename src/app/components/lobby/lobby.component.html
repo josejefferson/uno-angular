@@ -1,0 +1,24 @@
+<div class="container max-w-6xl mx-auto px-5 py-4">
+  <h1 class="logo-style mb-4 text-center">Sala #{{ room.id }}</h1>
+
+  <div class="text-center my-5">
+    <button class="btn btn-success" (click)="startGame()" *ngIf="!starting">Iniciar partida</button>
+    <button class="btn" *ngIf="starting" disabled>Iniciando...</button>
+  </div>
+
+  <div class="players">
+    <div
+      class="player bg-{{ seedColor(player.id) }}-900"
+      [class.border-yellow-500]="!!player.isOwner"
+      [class.opacity-25]="!player.online"
+      *ngFor="let player of room.players"
+    >
+      <div class="player-name">{{ player.name || '(Sem nome)' }}</div>
+      <img
+        class="block"
+        src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ player.id }}"
+        alt="Avatar"
+      />
+    </div>
+  </div>
+</div>

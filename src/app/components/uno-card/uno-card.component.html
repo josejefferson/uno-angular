@@ -1,13 +1,14 @@
 <div
   class="uno-card"
-	[style.--size]="size"
-	style.--color="var(--{{color}})"
-	[class.is-wild]="wild"
+  style.--icon="'{{ iconText }}'"
+  [style.--size]="size"
+  style.--color="var(--{{ color }})"
+  [class.is-wild]="card?.icon?.startsWith('WILD')"
 >
-  <div class="number number-normal">{{icon}}</div>
-  <div class="uno-card-middle">
+  <div class="number number-normal" *ngIf="!back"></div>
+  <div class="uno-card-middle" *ngIf="!back">
     <div class="wild"></div>
-    <div class="number number-middle">{{icon}}</div>
+    <div class="number number-middle" *ngIf="!back"></div>
   </div>
-  <div class="number number-inverted">{{icon}}</div>
+  <div class="number number-inverted" *ngIf="!back"></div>
 </div>

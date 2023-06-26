@@ -1,8 +1,9 @@
 .uno-card {
   --red: #d72600;
+  --yellow: #ecd407;
   --blue: #0956bf;
   --green: #379711;
-  --yellow: #ecd407;
+  --gray: gray;
   width: calc(var(--size, 1) * 70px);
   height: calc(var(--size, 1) * 100px);
   border: white calc(var(--size, 1) * 5px) solid;
@@ -19,57 +20,57 @@
   font-weight: bold;
   user-select: none;
   line-height: initial;
+}
 
-  & .number {
-    display: flex;
-    color: white;
-    font-size: calc(var(--size, 1) * 12px);
-  }
+.uno-card .number {
+  display: flex;
+  color: white;
+  font-size: calc(var(--size, 1) * 12px);
+}
 
-  & .number-normal {
-    padding-top: calc(var(--size, 1) * 3px);
-  }
+.uno-card .number::before {
+  content: var(--icon, '?');
+}
 
-  & .uno-card-middle {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
+.uno-card .number-normal {
+  padding-top: calc(var(--size, 1) * 3px);
+}
 
-  & .uno-card-middle {
-    & .number-middle {
-      font-size: calc(var(--size, 1) * 24px);
-      background-color: white;
-      width: calc(var(--size, 1) * 50px);
-      height: calc(var(--size, 1) * 50px);
-      border-radius: 50%;
-      align-items: center;
-      justify-content: center;
-      display: flex;
-      color: var(--color, black);
-      z-index: 1;
-    }
-  }
+.uno-card .uno-card-middle {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
 
-  & .number-inverted {
-    padding-top: calc(var(--size, 1) * 3px);
-    transform: rotate(180deg);
-  }
+.uno-card .uno-card-middle .number-middle {
+  font-size: calc(var(--size, 1) * 24px);
+  background-color: white;
+  width: calc(var(--size, 1) * 50px);
+  height: calc(var(--size, 1) * 50px);
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  color: var(--color, black);
+  z-index: 1;
+}
 
-  &.is-wild {
-    & .wild {
-      position: absolute;
-      border: calc(var(--size, 1) * 28px) solid;
-      border-radius: 50%;
-      border-top-color: var(--red);
-      border-right-color: var(--blue);
-      border-bottom-color: var(--green);
-      border-left-color: var(--yellow);
-      outline: white calc(var(--size, 1) * 2px) solid;
-    }
-  }
+.uno-card .number-inverted {
+  padding-top: calc(var(--size, 1) * 3px);
+  transform: rotate(180deg);
+}
+
+.uno-card.is-wild .wild {
+  position: absolute;
+  border: calc(var(--size, 1) * 28px) solid;
+  border-radius: 50%;
+  border-top-color: var(--red);
+  border-right-color: var(--blue);
+  border-bottom-color: var(--green);
+  border-left-color: var(--yellow);
+  outline: white calc(var(--size, 1) * 2px) solid;
 }
 
 .uno-cards-pile {
