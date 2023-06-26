@@ -26,11 +26,15 @@ export class UnoCardComponent {
     if (!this.card) return ''
     return ICONS[this.card.icon] ?? this.card.icon ?? '?'
   }
-  
+
   ngOnInit() {
     if (this.back) this.color = 'gray'
     if (!this.card) return
     const color = this.back ? 'gray' : COLORS[this.card.wildColor ?? this.card.color]
     this.color = color
+  }
+
+  ngOnChanges() {
+    this.ngOnInit()
   }
 }
