@@ -81,12 +81,12 @@
     <div class="flex flex-row">
       <div class="w-full slot">
         <div class="my-cards-container" [class.disabled]="game.jogadorAtual.id !== me.id">
-          <div class="my-cards">
+          <div class="my-cards" #myCards>
             <div
               class="uno-card"
               (click)="jogar(i, card)"
               [class.naoPode]="!game.podeJogar(card)"
-              *ngFor="let card of me.cards || []; index as i"
+              *ngFor="let card of me.cards || []; index as i; trackBy: trackById"
             >
               <uno-card [@zoom] [card]="card" />
             </div>
@@ -115,4 +115,4 @@
 </main>
 
 <!-- <pre>{{game|json}}</pre> -->
-<app-select-color [select]="selectColor">
+<app-select-color [select]="selectColor"></app-select-color>

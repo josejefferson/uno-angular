@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, ElementRef, Input, ViewChild } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
 import { Player } from 'src/app/common/player'
@@ -28,24 +28,39 @@ export class GameComponent {
   @Input() me!: Player
   @Input() socket!: Socket
   @Input() game!: Game
-  selectColor?: (color: number|false) => any
+  @ViewChild('myCards') myCards?: ElementRef<HTMLElement>
+
+  selectColor?: (color: number | false) => any
   playerMap?: (typeof PLAYER_MAPS)[number]
 
   ngOnInit() {
     const playersLength = this.players()?.length > 7 ? 7 : this.players()?.length
     this.playerMap = PLAYER_MAPS[playersLength ?? 0]
+    this.socket.on('player:addCards', this.onAddCards.bind(this))
     ;(window as any).room = this.room
     ;(window as any).me = this.me
   }
 
+  ngOnDestroy() {
+    this.socket.off('player:addCards', [this.onAddCards.bind(this)])
+  }
+
+  onAddCards() {
+    setTimeout(() => {
+      this.myCards?.nativeElement.scrollTo({
+        left: this.myCards.nativeElement.scrollWidth,
+        behavior: 'smooth'
+      })
+    }, 300)
+  }
+
   async jogar(index: number, card: ICard) {
     if (card.color === -1) {
-      const result = await new Promise<number|false>((resolve) => {
+      const result = await new Promise<number | false>((resolve) => {
         this.selectColor = resolve
       })
       this.selectColor = undefined
-      // const result = prompt('Selecione a cor\n\n0: Vermelho\n1: Amarelo\n2: Azul\n3: Verde')
-      if (!result) return
+      if (typeof result !== 'number') return
       this.socket.emit('game:jogar', index, result)
     } else {
       this.socket.emit('game:jogar', index)
@@ -81,5 +96,9 @@ export class GameComponent {
     let players = this.game?.players.map((player, index) => ({ player, index }))
     if (filterMe) players = players.filter((player) => player.player.id !== this.me.id)
     return players
+  }
+
+  trackById(index: number, item: ICard) {
+    return item.id
   }
 }

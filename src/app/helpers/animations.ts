@@ -12,3 +12,9 @@ export const zoomAnimation = trigger('zoom', [
     animate(100, style({ width: 0 }))
   ])
 ])
+
+export const fadeAnimation = (timeIn = 200, timeOut?: number) =>
+  trigger('fade', [
+    transition(':enter', [style({ opacity: 0 }), animate(timeIn, style({ opacity: 1 }))]),
+    transition(':leave', [style({ opacity: 1 }), animate(timeOut ?? timeIn, style({ opacity: 0 }))])
+  ])

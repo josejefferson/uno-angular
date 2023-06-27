@@ -137,8 +137,7 @@
 }
 
 .game-rotation {
-  @apply scale-[1];
-  width: 300px;
+  @apply w-[240px] sm:w-[300px];
   position: absolute;
   margin-bottom: 65px;
   opacity: 0.3;
