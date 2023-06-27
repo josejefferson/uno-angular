@@ -109,9 +109,12 @@
   height: 100%;
 }
 
-::ng-deep .slots-top .slot .cards-container .cards,
-::ng-deep .slots-top .slot .avatar {
-  @apply rotate-180 translate-y-[-10px];
+::ng-deep .slots-top .slot {
+  @apply !flex-col-reverse;
+}
+
+::ng-deep .slots-top .slot .name-container {
+  @apply -order-1;
 }
 
 ::ng-deep .slots-left .slot .cards-container .cards,
@@ -137,10 +140,7 @@
 }
 
 .game-rotation {
-  /* @apply w-[240px] sm:w-[300px]; */
   @apply w-20;
-  /* position: absolute; */
-  /* margin-bottom: 65px; */
   opacity: 0.3;
   animation: rotate 10s linear infinite;
   pointer-events: none;
@@ -163,4 +163,18 @@
   to {
     transform: rotate(360deg) scaleX(var(--tw-scale-x, 1));
   }
+}
+
+.baralho .carta-topo {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 transition-all;
+}
+
+.baralho .cartas {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 shadow-[black_5px_5px] rounded-[12px];
+}
+
+.baralho:not(.disabled):hover .carta-topo {
+  @apply -translate-x-2 shadow-2xl cursor-pointer;
+  --tw-translate-y: calc(-50% - 0.5rem);
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }

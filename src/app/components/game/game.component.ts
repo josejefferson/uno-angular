@@ -4,7 +4,7 @@ import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
 import { Player } from 'src/app/common/player'
 import { Room } from 'src/app/common/room'
-import { zoomAnimation } from 'src/app/helpers/animations'
+import { fadeAnimation, zoomAnimation } from 'src/app/helpers/animations'
 import { ICard } from 'src/app/types/cards'
 
 const PLAYER_MAPS = [
@@ -22,7 +22,7 @@ const PLAYER_MAPS = [
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
-  animations: [zoomAnimation]
+  animations: [zoomAnimation, fadeAnimation()]
 })
 export class GameComponent {
   @Input() room!: Room
@@ -63,6 +63,7 @@ export class GameComponent {
     this.socket.on('player:addCards', this.onAddCards.bind(this))
     ;(window as any).room = this.room
     ;(window as any).me = this.me
+    ;(window as any).game = this
   }
 
   ngOnDestroy() {

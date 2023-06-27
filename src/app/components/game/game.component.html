@@ -1,4 +1,5 @@
 <main class="game-container flex flex-row" style="height: 100vh" *ngIf="game && playerMap">
+  <!-- Jogadores no topo -->
   <div class="slots-left flex flex-col">
     <app-player-slot
       class="flex-1"
@@ -17,6 +18,7 @@
   </div>
 
   <div class="flex flex-col flex-1 overflow-hidden">
+    <!-- Jogadores da esquerda -->
     <div class="flex flex-row slots-top">
       <app-player-slot
         class="flex-1"
@@ -34,49 +36,64 @@
       />
     </div>
 
+    <!-- Centro -->
     <div class="flex flex-row flex-1 p-5">
       <div class="slot slot-middle flex-1 flex flex-col">
+        <!-- Mesa -->
         <div
-          class="relative w-full h-full flex items-center justify-center text-center flex-col max-w-sm max-h-96 rounded-lg"
-          style="background-image:url('/assets/wood-texture.svg')"
+          class="slot slot-middle flex-1 flex flex-col relative w-full h-full items-center justify-center text-center max-w-sm max-h-96 rounded-lg"
+          style="background-image: url('/assets/wood-texture.svg')"
         >
+          <!-- Tela cheia -->
+          <button (click)="fullscreen()" class="btn btn-square btn-sm absolute top-2 left-2">
+            <i class="fas fa-expand"></i>
+          </button>
+
+          <!-- De quem é a vez -->
           <h1 class="absolute right-2 top-1 text-black">
-          É a
-          {{
-            game.jogadorAtual.id === me.id
-            ? 'sua vez'
-            : 'vez de ' + (game.jogadorAtual.name || '(Sem nome)')
-          }}
+            É a
+            {{
+              game.jogadorAtual.id === me.id
+                ? 'sua vez'
+                : 'vez de ' + (game.jogadorAtual.name || '(Sem nome)')
+            }}
           </h1>
 
+          <!-- Descarte -->
           <uno-card [card]="game.descarteUltimaCarta!" [size]="centerCardSize" />
 
+          <!-- Baralho -->
+          <div
+            class="baralho"
+            [class.disabled]="game.comprou"
+            [hidden]="game.baralhoCount <= 0"
+            (click)="!game.comprou && comprar()"
+          >
+            <uno-card [back]="true" class="cartas" [hidden]="game.baralhoCount === 1" />
+            <uno-card [back]="true" class="carta-topo" />
+          </div>
+
+          <!-- Direção -->
           <img
             src="/assets/arrow-rotate.svg"
             class="game-rotation absolute bottom-3 left-3"
             [class.inverted]="game.direcao === -1"
           />
-          <!-- <app-baralho
-            [quantidade]="game.baralhoCount"
-            (comprar)="comprar"
-            [disabled]="game.jogadorAtual.id !== player.id"
-          /> -->
 
-            <button (click)="fullscreen()" class="btn btn-square btn-sm absolute top-2 left-2">
-              <i class="fas fa-expand"></i>
-            </button>
-
-            <button
-              class="btn btn-warning mt-2 absolute right-2 bottom-2 sm:btn-sm md:btn-md"
-              (click)="game.comprou ? passar() : comprar()"
-              [disabled]="game.jogadorAtual.id !== me.id"
-            >
-              {{ game.comprou ? 'PASSAR' : 'COMPRAR (' + game.baralhoCount + ')' }}
-            </button>
+          <!-- Botão "passar" -->
+          <button
+            [@fade]
+            class="btn mt-2 absolute right-2 bottom-2 sm:btn-sm md:btn-md"
+            (click)="passar()"
+            *ngIf="game.jogadorAtual.id === me.id && game.comprou"
+          >
+            PASSAR
+          </button>
         </div>
       </div>
     </div>
 
+    <!-- Suas cartas -->
     <div class="flex flex-row">
       <div class="w-full slot">
         <div class="my-cards-container" [class.disabled]="game.jogadorAtual.id !== me.id">
@@ -95,6 +112,7 @@
     </div>
   </div>
 
+  <!-- Jogadores da direita -->
   <div class="flex flex-col slots-right">
     <app-player-slot
       class="flex-1"
@@ -113,5 +131,5 @@
   </div>
 </main>
 
-<!-- <pre>{{game|json}}</pre> -->
+<!-- Selecionar cor do curinga -->
 <app-select-color [select]="selectColor"></app-select-color>
