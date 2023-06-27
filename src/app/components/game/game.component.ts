@@ -1,3 +1,4 @@
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { Component, ElementRef, Input, ViewChild } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
@@ -13,7 +14,7 @@ const PLAYER_MAPS = [
   [-1, -1, 0, 1, -1, -1],
   [-1, 0, 1, -1, 2, -1],
   [-1, 0, 1, 2, 3, -1],
-  [0, 1, 2, 3, 4, -1],
+  [0, 1, 2, -1, 3, 4],
   [0, 1, 2, 3, 4, 5]
 ] as const
 
@@ -33,7 +34,30 @@ export class GameComponent {
   selectColor?: (color: number | false) => any
   playerMap?: (typeof PLAYER_MAPS)[number]
 
+  centerCardSize: number = 1.5
+  myCardSize: number = 1
+
+  readonly breakpoint$ = this.breakpointObserver.observe([
+    Breakpoints.Large,
+    Breakpoints.Medium,
+    Breakpoints.Small,
+    '(min-width: 640px)'
+  ])
+
+  private breakpointChanged() {
+    if (this.breakpointObserver.isMatched('(min-width: 641px)')) {
+      this.centerCardSize = 1.5
+      this.myCardSize = 1
+    } else {
+      this.centerCardSize = 1
+      this.myCardSize = 0.7
+    }
+  }
+
+  constructor(private breakpointObserver: BreakpointObserver) {}
+
   ngOnInit() {
+    this.breakpoint$.subscribe(() => this.breakpointChanged())
     const playersLength = this.players()?.length > 7 ? 7 : this.players()?.length
     this.playerMap = PLAYER_MAPS[playersLength ?? 0]
     this.socket.on('player:addCards', this.onAddCards.bind(this))
@@ -100,5 +124,13 @@ export class GameComponent {
 
   trackById(index: number, item: ICard) {
     return item.id
+  }
+
+  fullscreen() {
+    if (document.fullscreenElement) {
+      document.exitFullscreen()
+    } else {
+      document.documentElement.requestFullscreen()
+    }
   }
 }

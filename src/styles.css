@@ -6,29 +6,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* * {
-  --translate: 0, 0;
-  --translate3d: 0, 0, 0;
-  --translateX: 0;
-  --translateY: 0;
-  --translateZ: 0;
-  --scale: 1, 1;
-  --scale3d: 1, 1, 1;
-  --scaleX: 1;
-  --scaleY: 1;
-  --scaleZ: 1;
-  --rotate: 0;
-  --rotate3d: 0, 0, 0, 0;
-  --rotateX: 0;
-  --rotateY: 0;
-  --rotateZ: 0;
-  transform: translate(var(--translate)) translate3d(var(--translate3d))
-    translateX(var(--translateX)) translateY(var(--translateY)) translateZ(var(--translateZ))
-    scale(var(--scale)) scale3d(var(--scale3d)) scaleX(var(--scaleX)) scaleY(var(--scaleY))
-    scaleZ(var(--scaleZ)) rotate(var(--rotate)) rotate3d(var(--rotate3d)) rotateX(var(--rotateX))
-    rotateY(var(--rotateY)) rotateZ(var(--rotateZ));
-} */
-
 [hidden] {
   display: none;
 }
@@ -162,15 +139,12 @@
   font-display: swap;
 }
 
-
 body {
   font-family: 'TT Chocolates', Roboto, Arial, Helvetica, sans-serif !important;
-  /* background-image: url('/assets/background.webp'); */
-  /* background-size: cover; */
-  /* background-position-x: right; */
-  min-height: 100vh;
+  background-image: url('/assets/background.svg');
+  min-height: 100vh !important;
+  height: auto !important;
   margin: 0;
-  /* @apply bg-gradient-to-r from-yellow-600 to-red-600; */
 }
 
 .logo-style {
@@ -178,6 +152,3 @@ body {
   font-family: Cabin;
   text-shadow: black -5px 2px 0px;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

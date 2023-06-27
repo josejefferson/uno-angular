@@ -34,47 +34,46 @@
       />
     </div>
 
-    <div class="flex flex-row flex-1">
+    <div class="flex flex-row flex-1 p-5">
       <div class="slot slot-middle flex-1 flex flex-col">
-        <img
-          src="/assets/arrow-rotate.svg"
-          class="game-rotation"
-          [class.inverted]="game.direcao === -1"
-        />
-
-        <h1>
+        <div
+          class="relative w-full h-full flex items-center justify-center text-center flex-col max-w-sm max-h-96 rounded-lg"
+          style="background-image:url('/assets/wood-texture.svg')"
+        >
+          <h1 class="absolute right-2 top-1 text-black">
           É a
           {{
             game.jogadorAtual.id === me.id
-              ? 'sua vez'
-              : 'vez de ' + (game.jogadorAtual.name || '(Sem nome)')
+            ? 'sua vez'
+            : 'vez de ' + (game.jogadorAtual.name || '(Sem nome)')
           }}
-        </h1>
+          </h1>
 
-        <uno-card [card]="game.descarteUltimaCarta!" [size]="2" />
+          <uno-card [card]="game.descarteUltimaCarta!" [size]="centerCardSize" />
 
-        <!-- <app-baralho
-          [quantidade]="game.baralhoCount"
-          (comprar)="comprar"
-          [disabled]="game.jogadorAtual.id !== player.id"
-        /> -->
+          <img
+            src="/assets/arrow-rotate.svg"
+            class="game-rotation absolute bottom-3 left-3"
+            [class.inverted]="game.direcao === -1"
+          />
+          <!-- <app-baralho
+            [quantidade]="game.baralhoCount"
+            (comprar)="comprar"
+            [disabled]="game.jogadorAtual.id !== player.id"
+          /> -->
 
-        <button
-          class="btn btn-success mt-2"
-          (click)="passar()"
-          [disabled]="game.jogadorAtual.id !== me.id"
-          [hidden]="!game.comprou"
-        >
-          PASSAR
-        </button>
-        <button
-          class="btn btn-success mt-2"
-          (click)="comprar()"
-          [disabled]="game.jogadorAtual.id !== me.id"
-          [hidden]="game.comprou"
-        >
-          COMPRAR ({{ game.baralhoCount }})
-        </button>
+            <button (click)="fullscreen()" class="btn btn-square btn-sm absolute top-2 left-2">
+              <i class="fas fa-expand"></i>
+            </button>
+
+            <button
+              class="btn btn-warning mt-2 absolute right-2 bottom-2 sm:btn-sm md:btn-md"
+              (click)="game.comprou ? passar() : comprar()"
+              [disabled]="game.jogadorAtual.id !== me.id"
+            >
+              {{ game.comprou ? 'PASSAR' : 'COMPRAR (' + game.baralhoCount + ')' }}
+            </button>
+        </div>
       </div>
     </div>
 
@@ -88,7 +87,7 @@
               [class.naoPode]="!game.podeJogar(card)"
               *ngFor="let card of me.cards || []; index as i; trackBy: trackById"
             >
-              <uno-card [@zoom] [card]="card" />
+              <uno-card [@zoom] [card]="card" [size]="myCardSize" />
             </div>
           </div>
         </div>

@@ -137,9 +137,10 @@
 }
 
 .game-rotation {
-  @apply w-[240px] sm:w-[300px];
-  position: absolute;
-  margin-bottom: 65px;
+  /* @apply w-[240px] sm:w-[300px]; */
+  @apply w-20;
+  /* position: absolute; */
+  /* margin-bottom: 65px; */
   opacity: 0.3;
   animation: rotate 10s linear infinite;
   pointer-events: none;
