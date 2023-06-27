@@ -1,0 +1,62 @@
+.loading-bg {
+  @apply fixed
+	top-0
+	left-0
+	w-full
+	h-full
+	flex
+	items-center
+	justify-center
+	flex-col
+	text-center
+	pointer-events-none
+	z-50
+	bg-black
+	bg-opacity-70;
+}
+
+/**
+  * Flip square
+  *
+  * @author jh3y - jheytompkins.com
+  */
+.flip-square:before {
+  -webkit-animation: flip-square 1.5s infinite;
+  animation: flip-square 1.5s infinite;
+  background-color: white;
+  content: '';
+  display: block;
+  height: 70px;
+  width: 50px;
+  border-radius: 5px;
+}
+
+@-webkit-keyframes flip-square {
+  0% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(0deg) rotateY(0deg);
+    transform: perspective(50px) rotate(45deg) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(0deg);
+    transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(-180deg);
+    transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(-180deg);
+  }
+}
+
+@keyframes flip-square {
+  0% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(0deg) rotateY(0deg);
+    transform: perspective(50px) rotate(45deg) rotateX(0deg) rotateY(0deg);
+  }
+  50% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(0deg);
+    transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(0deg);
+  }
+  100% {
+    -webkit-transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(-180deg);
+    transform: perspective(50px) rotate(45deg) rotateX(-180deg) rotateY(-180deg);
+  }
+}

@@ -16,7 +16,9 @@ import { ToastrModule } from 'ngx-toastr'
 import { env } from 'src/environments/environment';
 import { GameComponent } from './components/game/game.component';
 import { PlayerSlotComponent } from './components/player-slot/player-slot.component';
-import { SelectColorComponent } from './components/select-color/select-color.component'
+import { SelectColorComponent } from './components/select-color/select-color.component';
+import { RoomErrorComponent } from './components/room-error/room-error.component';
+import { LoadingComponent } from './components/loading/loading.component'
 
 const socketConfig: SocketIoConfig = {
   url: env.api + '/',
@@ -38,7 +40,9 @@ const socketConfig: SocketIoConfig = {
     SetupComponent,
     GameComponent,
     PlayerSlotComponent,
-    SelectColorComponent
+    SelectColorComponent,
+    RoomErrorComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

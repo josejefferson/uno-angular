@@ -1,4 +1,4 @@
-<div class="mx-auto py-4 p-4 max-w-md">
+<div class="mx-auto py-4 p-4 max-w-md text-center">
   <h1 class="logo-style mb-4 text-center">Seus dados</h1>
 
   <div class="form-control w-full">
@@ -26,11 +26,17 @@
         [value]="sessionID"
         (keyup)="setSessionID(sessionIDInput.value)"
       />
-      <button class="btn join-item" (click)="generateRandomSessionID()"><i class="fas fa-dice"></i></button>
+      <button class="btn join-item" (click)="generateRandomSessionID()">
+        <i class="fas fa-dice"></i>
+      </button>
     </div>
   </div>
 
-  <div class="border-white border-[6px] shadow-[4px_4px_black] p-3 pb-0 text-white w-[150px] my-3">
+  <div
+    class="border-white border-[6px] shadow-[4px_4px_black] p-3 pb-0 text-white w-[150px] my-3 bg-{{
+      seedColor(sessionID)
+    }}-900 mx-auto"
+  >
     <div class="text-2xl text-center mb-3">
       {{ name || '(Sem nome)' }}
       <img

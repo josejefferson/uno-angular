@@ -1,0 +1,13 @@
+<div class="h-[100vh] flex items-center justify-center text-center p-3 flex-col">
+  <div [ngSwitch]="err">
+    <div class="text-9xl fas fa-door-open"></div>
+
+    <div *ngSwitchCase="'Esta sala não existe'" class="text-6xl mt-3">Esta sala não existe</div>
+
+    <div *ngSwitchCase="'Invalid namespace'" class="text-6xl mt-3">Código de sala inválido</div>
+
+    <div *ngSwitchDefault class="text-6xl mt-3">Ocorreu um erro ao carregar a sala: <i>{{ err }}</i></div>
+  </div>
+
+  <button class="btn btn-outline btn-info mt-6" routerLink="/rooms">Retornar às salas</button>
+</div>

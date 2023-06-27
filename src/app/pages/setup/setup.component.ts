@@ -1,4 +1,5 @@
 import { Component } from '@angular/core'
+import { seedColor } from 'src/app/helpers/seed-color'
 
 @Component({
   selector: 'app-setup',
@@ -6,6 +7,8 @@ import { Component } from '@angular/core'
   styleUrls: ['./setup.component.css']
 })
 export class SetupComponent {
+  seedColor = seedColor
+  
   name: string = localStorage.getItem('name') || ''
   sessionID: string = localStorage.getItem('sessionID') || Math.random().toString()
 

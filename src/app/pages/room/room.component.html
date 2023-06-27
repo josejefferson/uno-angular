@@ -1,2 +1,10 @@
+<app-room-error [err]="error" *ngIf="error" />
 <app-lobby [room]="room" [me]="me" [socket]="socket" *ngIf="room && !room.currentGame" />
-<app-game [room]="room" [game]="room.currentGame" [me]="me" [socket]="socket" *ngIf="room && room.currentGame" />
+<app-game
+  [room]="room"
+  [game]="room.currentGame"
+  [me]="me"
+  [socket]="socket"
+  *ngIf="room && room.currentGame"
+/>
+<app-loading [@fade] message="Carregando sala" *ngIf="!room && !error" />

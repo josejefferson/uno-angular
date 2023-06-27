@@ -18,11 +18,31 @@
 }
 
 .players .player.owner {
-	@apply border-yellow-500;
+  @apply border-yellow-500 rounded-lg;
 }
 
 .players .player .player-name {
   @apply text-2xl
 	text-center
 	mb-3;
+}
+
+.players .player .score {
+  @apply absolute 
+	top-0
+	right-0
+	w-7
+	h-7
+	bg-blue-500
+	rounded-full
+	flex
+	items-center
+	justify-center
+	shadow-lg
+	translate-x-[50%]
+	translate-y-[-50%];
+}
+
+.players .player .player-place {
+	@apply absolute bottom-1 right-1 text-2xl;
 }

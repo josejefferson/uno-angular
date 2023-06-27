@@ -8,20 +8,19 @@
 
   <div class="players">
     <div
-      class="player bg-{{ seedColor(player.id) }}-900"
+      class="player bg-{{ seedColor(player.id) }}-900 animate__animated animate__bounceIn"
       [class.owner]="player.id === room.owner"
       [class.opacity-25]="!player.online"
-      *ngFor="let player of room.players"
+      *ngFor="let player of players"
     >
-      <div class="player-name">
-        <span *ngIf="player.score">({{ player.score }}) </span>
-        <span>{{ player.name || '(Sem nome)' }}</span>
-      </div>
+      <div class="score" *ngIf="player.score">{{ player.score }}</div>
+      <div class="player-name">{{ player.name || '(Sem nome)' }}</div>
       <img
-        class="block"
+        class="avatar block"
         src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ player.id }}"
         alt="Avatar"
       />
+      <div class="player-place">{{ player.place }}</div>
     </div>
   </div>
 </div>

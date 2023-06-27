@@ -4,9 +4,11 @@ import { Socket, SocketIoConfig } from 'ngx-socket-io'
 import { ToastrService } from 'ngx-toastr'
 import { IPlayer, Player } from 'src/app/common/player'
 import { IRoom, Room } from 'src/app/common/room'
+import { fadeAnimation } from 'src/app/helpers/animations'
+import { env } from 'src/environments/environment'
 
 const socketConfig = (roomID: string, sessionID: string, name: string): SocketIoConfig => ({
-  url: `http://vps40806.publiccloud.com.br:4000/room/${roomID}?sessionID=${sessionID}&name=${name}`,
+  url: `${env.api}/room/${roomID}?sessionID=${sessionID}&name=${name}`,
   options: {
     transports: ['websocket'],
     withCredentials: true
@@ -16,12 +18,12 @@ const socketConfig = (roomID: string, sessionID: string, name: string): SocketIo
 @Component({
   selector: 'app-room',
   templateUrl: './room.component.html',
-  styleUrls: ['./room.component.css']
+  styleUrls: ['./room.component.css'],
+  animations: [fadeAnimation()]
 })
 export class RoomComponent {
   socket: Socket
-  error: any
-  starting = false
+  error?: string
   me = new Player({ id: '', name: 'Jogador' })
   room?: Room
   roomID: string
@@ -61,12 +63,10 @@ export class RoomComponent {
   }
 
   connect_error(err: any) {
-    this.toastr.error(err?.message || err, 'Erro ao conectar')
-    // error = err
+    this.error = err?.message || err
   }
 
   connect() {
-    // console.log('Conectado!')
   }
 
   disconnect(reason: string) {
