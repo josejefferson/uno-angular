@@ -7,7 +7,8 @@ import { ToastrModule } from 'ngx-toastr'
 import { env } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { LoadingModule } from './components/loading/loading.module'
+import { LoadingModule } from './components/loading/loading.module';
+import { UNOEventComponent } from './components/uno-event/uno-event.component';
 
 const socketConfig: SocketIoConfig = {
   url: env.api + '/',
@@ -18,7 +19,7 @@ const socketConfig: SocketIoConfig = {
 }
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, UNOEventComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

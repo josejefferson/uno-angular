@@ -1,0 +1,33 @@
+.icon {
+  @apply text-9xl;
+}
+
+.title {
+  @apply text-3xl sm:text-6xl mt-4 sm:mt-6;
+}
+
+.icon.uno-invert {
+  animation: uno-invert 2s ease-in-out alternate infinite;
+}
+
+.uno-card {
+  @apply w-16 h-24 sm:w-24 sm:h-32 border-4 sm:border-8 rounded-xl sm:rounded-2xl absolute left-1/2 -translate-x-1/2;
+  animation: 1s uno-card-slide 1s ease;
+  animation-fill-mode: both;
+}
+
+.uno-card:nth-child(1) {
+  --transform-destination: calc(-100% - 5px);
+}
+
+.uno-card:nth-child(2) {
+  --transform-destination: 5px;
+}
+
+.uno-card:nth-child(3) {
+  --transform-destination: calc(-200% - 15px);
+}
+
+.uno-card:nth-child(4) {
+  --transform-destination: calc(100% + 15px);
+}

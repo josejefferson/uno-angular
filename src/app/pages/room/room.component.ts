@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr'
 import { IPlayer, Player } from 'src/app/common/player'
 import { IRoom, Room } from 'src/app/common/room'
 import { fadeAnimation } from 'src/app/helpers/animations'
+import { ToastService } from 'src/app/services/toast.service'
 import { env } from 'src/environments/environment'
 
 const socketConfig = (roomID: string, sessionID: string, name: string): SocketIoConfig => ({
@@ -28,7 +29,11 @@ export class RoomComponent {
   room?: Room
   roomID: string
 
-  constructor(private route: ActivatedRoute, private toastr: ToastrService) {
+  constructor(
+    private route: ActivatedRoute,
+    private toastr: ToastrService,
+    private toastService: ToastService<string>
+  ) {
     const roomID = this.route.snapshot.queryParamMap.get('id') || ''
     const sessionID =
       this.route.snapshot.queryParamMap.get('sessionID') || localStorage.getItem('sessionID')
@@ -45,6 +50,7 @@ export class RoomComponent {
     this.socket.on('message', this.message.bind(this))
     this.socket.on('player:data', this.player_data.bind(this))
     this.socket.on('room:data', this.room_data.bind(this))
+    this.socket.on('room:startGame', this.room_startGame.bind(this))
     this.socket.on('room:setPlayerOnline', this.room_setPlayerOnline.bind(this))
     this.socket.ioSocket.onAny(this.socketEvent.bind(this))
   }
@@ -58,6 +64,7 @@ export class RoomComponent {
     this.socket.off('message', [this.message.bind(this)])
     this.socket.off('player:data', [this.player_data.bind(this)])
     this.socket.off('room:data', [this.room_data.bind(this)])
+    this.socket.off('room:startGame', [this.room_startGame.bind(this)])
     this.socket.off('room:setPlayerOnline', [this.room_setPlayerOnline.bind(this)])
     this.socket.ioSocket.offAny([this.socketEvent.bind(this)])
   }
@@ -81,7 +88,7 @@ export class RoomComponent {
   }
 
   message(message: string) {
-    this.toastr.info(message)
+    this.toastService.showToast(message)
   }
 
   player_data(playerData: IPlayer) {
@@ -90,6 +97,10 @@ export class RoomComponent {
 
   room_data(roomData: IRoom) {
     this.room = new Room(roomData)
+  }
+
+  room_startGame() {
+    this.toastService.showToast('O jogo começou')
   }
 
   room_setPlayerOnline(player: IPlayer) {

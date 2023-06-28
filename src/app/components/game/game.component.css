@@ -173,7 +173,8 @@
   @apply absolute right-3 top-1/2 -translate-y-1/2 shadow-[black_5px_5px] rounded-[12px];
 }
 
-.baralho:not(.disabled):hover .carta-topo {
+.baralho:not(.disabled):hover .carta-topo,
+.baralho:not(.disabled):focus .carta-topo {
   @apply -translate-x-2 shadow-2xl cursor-pointer;
   --tw-translate-y: calc(-50% - 0.5rem);
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))

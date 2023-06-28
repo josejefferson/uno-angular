@@ -186,3 +186,23 @@ body {
     animation-timing-function: ease-in;
   }
 }
+
+@keyframes uno-invert {
+  from,
+  to {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes uno-card-slide {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(var(--transform-destination));
+  }
+}
