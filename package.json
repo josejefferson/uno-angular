@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "serve -s -L dist/uno",
+    "start": "serve -sLn dist/uno",
     "dev": "ng serve --hmr --disable-host-check",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",

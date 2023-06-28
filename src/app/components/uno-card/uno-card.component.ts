@@ -18,7 +18,7 @@ const COLORS = ['red', 'yellow', 'blue', 'green'] as const
 })
 export class UnoCardComponent {
   @Input() back = false
-  @Input() size: number = 1
+  @Input() size?: number
   @Input() card!: ICard
   color?: 'red' | 'green' | 'blue' | 'yellow' | 'gray'
 
