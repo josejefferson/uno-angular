@@ -2,6 +2,7 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "cli": { "analytics": false },
   "projects": {
     "uno": {
       "projectType": "application",
@@ -29,7 +30,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/uno/browser",
+            "outputPath": "dist/uno",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
@@ -41,18 +42,6 @@
           },
           "configurations": {
             "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "10mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "10kb"
-                }
-              ],
               "outputHashing": "all"
             },
             "development": {
@@ -96,58 +85,6 @@
             "styles": ["@angular/material/prebuilt-themes/indigo-pink.css", "src/styles.css"],
             "scripts": []
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/uno/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media"
-            },
-            "development": {
-              "buildOptimizer": false,
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@nguniversal/builders:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "uno:build:development",
-              "serverTarget": "uno:server:development"
-            },
-            "production": {
-              "browserTarget": "uno:build:production",
-              "serverTarget": "uno:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@nguniversal/builders:prerender",
-          "options": {
-            "routes": ["/"]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "uno:build:production",
-              "serverTarget": "uno:server:production"
-            },
-            "development": {
-              "browserTarget": "uno:build:development",
-              "serverTarget": "uno:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }
