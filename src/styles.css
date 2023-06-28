@@ -27,6 +27,12 @@
   background: rgba(0, 0, 0, 0);
 }
 
+.logo-style {
+  @apply uppercase text-6xl text-[#f8da27];
+  font-family: Cabin;
+  text-shadow: black -5px 2px 0px;
+}
+
 @font-face {
   font-family: 'TT Chocolates';
   src: url('/assets/fonts/TT Chocolates Trial Bold italic.otf');
@@ -147,8 +153,36 @@ body {
   margin: 0;
 }
 
-.logo-style {
-  @apply uppercase text-6xl text-[#f8da27];
-  font-family: Cabin;
-  text-shadow: black -5px 2px 0px;
+/**
+ * Flip (Animate.css)
+ * https://github.com/animate-css/animate.css/blob/main/source/flippers/flip.css
+ */
+@keyframes my-flip {
+  from {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
+    animation-timing-function: ease-out;
+  }
+
+  10% {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+      rotate3d(0, 1, 0, -190deg);
+    animation-timing-function: ease-out;
+  }
+
+  12.5% {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 150px)
+      rotate3d(0, 1, 0, -170deg);
+    animation-timing-function: ease-in;
+  }
+
+  20% {
+    transform: perspective(400px) scale3d(0.95, 0.95, 0.95) translate3d(0, 0, 0)
+      rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
+  }
+
+  25% {
+    transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, 0deg);
+    animation-timing-function: ease-in;
+  }
 }
