@@ -3,22 +3,11 @@ import { NgModule } from '@angular/core'
 import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io'
+import { ToastrModule } from 'ngx-toastr'
+import { env } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { LobbyComponent } from './components/lobby/lobby.component'
-import { UnoCardComponent } from './components/uno-card/uno-card.component'
-import { HomeComponent } from './pages/home/home.component'
-import { RoomComponent } from './pages/room/room.component'
-import { RoomsComponent } from './pages/rooms/rooms.component'
-import { TestComponent } from './pages/test/test.component';
-import { SetupComponent } from './pages/setup/setup.component'
-import { ToastrModule } from 'ngx-toastr'
-import { env } from 'src/environments/environment';
-import { GameComponent } from './components/game/game.component';
-import { PlayerSlotComponent } from './components/player-slot/player-slot.component';
-import { SelectColorComponent } from './components/select-color/select-color.component';
-import { RoomErrorComponent } from './components/room-error/room-error.component';
-import { LoadingComponent } from './components/loading/loading.component'
+import { LoadingModule } from './components/loading/loading.module'
 
 const socketConfig: SocketIoConfig = {
   url: env.api + '/',
@@ -29,28 +18,15 @@ const socketConfig: SocketIoConfig = {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    RoomsComponent,
-    UnoCardComponent,
-    TestComponent,
-    RoomComponent,
-    LobbyComponent,
-    SetupComponent,
-    GameComponent,
-    PlayerSlotComponent,
-    SelectColorComponent,
-    RoomErrorComponent,
-    LoadingComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     SocketIoModule.forRoot(socketConfig),
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    LoadingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

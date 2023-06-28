@@ -1,17 +1,29 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { HomeComponent } from './pages/home/home.component'
-import { RoomsComponent } from './pages/rooms/rooms.component'
-import { TestComponent } from './pages/test/test.component'
-import { RoomComponent } from './pages/room/room.component'
-import { SetupComponent } from './pages/setup/setup.component'
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'setup', component: SetupComponent },
-  { path: 'rooms', component: RoomsComponent },
-  { path: 'room', component: RoomComponent },
-  { path: 'test', component: TestComponent }
+  { path: '', loadChildren: () => import('./pages/index/index.module').then((m) => m.IndexModule) },
+  {
+    path: 'test',
+    loadChildren: () => import('./pages/test/test.module').then((m) => m.TestModule)
+  },
+  {
+    path: 'setup',
+    loadChildren: () => import('./pages/setup/setup.module').then((m) => m.SetupModule)
+  },
+  {
+    path: 'rooms',
+    loadChildren: () => import('./pages/rooms/rooms.module').then((m) => m.RoomsModule)
+  },
+  {
+    path: 'room',
+    loadChildren: () => import('./pages/room/room.module').then((m) => m.RoomModule)
+  },
+  {
+    path: '**',
+    pathMatch: 'full',
+    loadChildren: () => import('./pages/not-found/not-found.module').then((m) => m.NotFoundModule)
+  }
 ]
 
 @NgModule({

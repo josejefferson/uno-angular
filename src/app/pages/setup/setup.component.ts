@@ -8,7 +8,7 @@ import { seedColor } from 'src/app/helpers/seed-color'
 })
 export class SetupComponent {
   seedColor = seedColor
-  
+
   name: string = localStorage.getItem('name') || ''
   sessionID: string = localStorage.getItem('sessionID') || Math.random().toString()
 
@@ -20,7 +20,7 @@ export class SetupComponent {
     localStorage.setItem('name', name)
     this.name = name
   }
-  
+
   setSessionID(sessionID: string) {
     localStorage.setItem('sessionID', sessionID)
     this.sessionID = sessionID

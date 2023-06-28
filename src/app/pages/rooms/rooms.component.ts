@@ -50,10 +50,12 @@ export class RoomsComponent {
 
   createRoom() {
     this.creatingRoom = true
-    this.http.post(env.api + `/api/room/?sessionID=${this.sessionID}&name=${this.name}`, {}).subscribe({
-      next: () => this.getRooms(true),
-      error: (err) => alert(err.message),
-      complete: () => (this.creatingRoom = false)
-    })
+    this.http
+      .post(env.api + `/api/room/?sessionID=${this.sessionID}&name=${this.name}`, {})
+      .subscribe({
+        next: () => this.getRooms(true),
+        error: (err) => alert(err.message),
+        complete: () => (this.creatingRoom = false)
+      })
   }
 }
