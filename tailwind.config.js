@@ -25,8 +25,7 @@ module.exports = {
         /border-(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-(900)/
     },
     {
-      pattern:
-        /border-yellow-500/
-    },
+      pattern: /border-yellow-500/
+    }
   ]
 }

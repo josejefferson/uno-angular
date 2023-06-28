@@ -6,7 +6,7 @@ import { fadeAnimation } from './helpers/animations'
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations:[fadeAnimation()]
+  animations: [fadeAnimation()]
 })
 export class AppComponent {
   loading = false

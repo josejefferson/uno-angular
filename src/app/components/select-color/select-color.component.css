@@ -14,7 +14,7 @@
 }
 
 .uno-card {
-	@apply cursor-pointer
+  @apply cursor-pointer
 	scale-100
 	hover:!scale-110
 	active:!scale-90

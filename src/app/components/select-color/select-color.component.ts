@@ -27,10 +27,10 @@ export class SelectColorComponent {
   }
 
   private breakpointChanged() {
-    if (this.breakpointObserver.isMatched(Breakpoints.Small)) { 
-      this.size=1.5
+    if (this.breakpointObserver.isMatched(Breakpoints.Small)) {
+      this.size = 1.5
     } else {
-      this.size=0.8
+      this.size = 0.8
     }
   }
 

@@ -26,7 +26,7 @@ const socketConfig: SocketIoConfig = {
     BrowserAnimationsModule,
     SocketIoModule.forRoot(socketConfig),
     ToastrModule.forRoot(),
-    LoadingModule,
+    LoadingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -6,7 +6,9 @@
 
     <div *ngSwitchCase="'Invalid namespace'" class="text-6xl mt-3">Código de sala inválido</div>
 
-    <div *ngSwitchDefault class="text-6xl mt-3">Ocorreu um erro ao carregar a sala: <i>{{ err }}</i></div>
+    <div *ngSwitchDefault class="text-6xl mt-3">
+      Ocorreu um erro ao carregar a sala: <i>{{ err }}</i>
+    </div>
   </div>
 
   <button class="btn btn-outline btn-info mt-6" routerLink="/rooms">Retornar às salas</button>

@@ -44,5 +44,5 @@
 }
 
 .players .player .player-place {
-	@apply absolute bottom-1 right-1 text-2xl;
+  @apply absolute bottom-1 right-1 text-2xl;
 }
