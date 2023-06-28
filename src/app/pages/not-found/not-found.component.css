@@ -1,5 +1,5 @@
 .uno-card {
-  animation: backInDown 1s ease, flip 3s ease infinite;
+  animation: backInDown 1s ease, my-flip 3s ease infinite;
   animation-fill-mode: both, none;
   backface-visibility: visible;
 }
@@ -26,7 +26,7 @@
  * Flip (Animate.css)
  * https://github.com/animate-css/animate.css/blob/main/source/flippers/flip.css
  */
-@keyframes flip {
+@keyframes my-flip {
   from {
     transform: perspective(400px) scale3d(1, 1, 1) translate3d(0, 0, 0) rotate3d(0, 1, 0, -360deg);
     animation-timing-function: ease-out;
