@@ -6,8 +6,8 @@
 >
   <div class="cards-container">
     <div class="cards">
-      <div class="uno-card-container" *ngFor="let i of cards()">
-        <uno-card [@zoom] [back]="true" [size]="0.5" />
+      <div class="uno-card-container" *ngFor="let i of cards()" [@zoom]>
+        <uno-card [back]="true" [size]="0.5" />
       </div>
     </div>
   </div>

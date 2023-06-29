@@ -108,8 +108,9 @@
               (click)="jogar(i, card)"
               [class.naoPode]="!game.podeJogar(card)"
               *ngFor="let card of me.cards || []; index as i; trackBy: trackById"
+              [@zoom]
             >
-              <uno-card [@zoom] [card]="card" class="my-card" tabindex="0" />
+              <uno-card [card]="card" class="my-card" tabindex="0" />
             </div>
           </div>
         </div>
