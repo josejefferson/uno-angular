@@ -49,7 +49,6 @@ export class RoomComponent {
     this.socket.on('error', this.errorr.bind(this))
     this.socket.on('message', this.message.bind(this))
     this.socket.on('player:data', this.player_data.bind(this))
-    this.socket.on('game:gritarUNO', this.game_gritarUNO.bind(this))
     this.socket.on('room:data', this.room_data.bind(this))
     this.socket.on('room:startGame', this.room_startGame.bind(this))
     this.socket.on('room:setPlayerOnline', this.room_setPlayerOnline.bind(this))
@@ -96,10 +95,6 @@ export class RoomComponent {
 
   player_data(playerData: IPlayer) {
     this.me = new Player(playerData)
-  }
-
-  game_gritarUNO(player: IPlayer) {
-    this.toastr.info(`${player.name} gritou UNO`)
   }
 
   room_data(roomData: IRoom) {
