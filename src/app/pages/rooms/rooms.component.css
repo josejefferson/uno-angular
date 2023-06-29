@@ -24,6 +24,12 @@
   relative;
 }
 
+.room.disabled {
+  @apply
+  pointer-events-none
+  opacity-50;
+}
+
 .room .content {
   @apply p-3
   w-full

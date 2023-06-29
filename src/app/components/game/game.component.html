@@ -60,7 +60,7 @@
           </h1>
 
           <!-- Descarte -->
-          <uno-card [card]="game.descarteUltimaCarta!" [size]="centerCardSize" />
+          <uno-card [card]="game.descarteUltimaCarta!" class="center-card" />
 
           <!-- Baralho -->
           <div
@@ -104,7 +104,7 @@
               [class.naoPode]="!game.podeJogar(card)"
               *ngFor="let card of me.cards || []; index as i; trackBy: trackById"
             >
-              <uno-card [@zoom] [card]="card" [size]="myCardSize" />
+              <uno-card [@zoom] [card]="card" class="my-card" />
             </div>
           </div>
         </div>

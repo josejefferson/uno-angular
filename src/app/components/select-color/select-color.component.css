@@ -14,9 +14,16 @@
 }
 
 .uno-card {
+	--size: 0.8;
   @apply cursor-pointer
 	scale-100
 	hover:!scale-110
 	active:!scale-90
 	transition-all;
+}
+
+@media (min-width: 768px) {
+  .uno-card {
+    --size: 1.5;
+  }
 }

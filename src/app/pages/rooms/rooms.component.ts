@@ -10,6 +10,7 @@ interface IRoom {
   started: boolean
   owner: string
   players: any[]
+  currentGame: any
   currentGameIndex: number
 }
 
@@ -57,5 +58,13 @@ export class RoomsComponent {
         error: (err) => alert(err.message),
         complete: () => (this.creatingRoom = false)
       })
+  }
+
+  inRoom(room: IRoom) {
+    return room.players.find((player) => player.id === this.sessionID)
+  }
+
+  roomDisabled(room: IRoom) {
+    return !!room.currentGame && !this.inRoom(room)
   }
 }

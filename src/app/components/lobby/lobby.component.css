@@ -8,8 +8,7 @@
 }
 
 .players .player {
-  @apply border-white
-	border-[6px]
+  @apply border-[6px]
 	shadow-[4px_4px_black]
 	p-3
 	pb-0
@@ -27,18 +26,31 @@
 	mb-3;
 }
 
-.players .player .score {
+.players .player .score,
+.players .player .you {
   @apply absolute 
-	top-0
-	right-0
-	w-7
+	bottom-0
+	left-0
 	h-7
-	bg-blue-500
-	rounded-full
+	px-2
+	bg-white
+	text-black
+	rounded-tr-sm
 	flex
 	items-center
-	justify-center
-	shadow-lg
+	justify-center;
+}
+
+.players .player .score {
+  @apply top-0
+	bottom-auto
+	left-auto
+	right-0
+	w-7
+	p-0
+	rounded-full
+	bg-blue-500
+	text-inherit
 	translate-x-[50%]
 	translate-y-[-50%];
 }

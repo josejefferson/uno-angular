@@ -1,4 +1,9 @@
-<div class="slot flex-1" [class.empty]="!player" [class.offline]="!player?.online">
+<div
+  class="slot flex-1"
+  [class.empty]="!player"
+  [class.offline]="!player?.online"
+  [class.vez]="vezDele"
+>
   <div class="cards-container">
     <div class="cards">
       <div class="uno-card-container" *ngFor="let i of cards()">
@@ -9,13 +14,12 @@
   <div class="avatar-container h-0 md:h-auto">
     <img
       class="avatar w-0 md:w-[50px] xl:w-[100px]"
-      [class.vez]="vezDele"
       src="https://api.dicebear.com/6.x/avataaars/svg?seed={{ player?.id }}"
       alt="Avatar"
     />
   </div>
   <div class="name-container">
-    <div class="name" [class.vez]="vezDele">
+    <div class="name">
       {{ player?.name || '(Sem nome)' }} {{ !player?.online ? '(offline)' : '' }}
     </div>
   </div>

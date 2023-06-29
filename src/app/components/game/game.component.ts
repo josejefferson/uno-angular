@@ -1,4 +1,3 @@
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
 import { Component, ElementRef, Input, ViewChild } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
@@ -34,31 +33,8 @@ export class GameComponent {
   selectColor?: (color: number | false) => any
   playerMap?: (typeof PLAYER_MAPS)[number]
 
-  centerCardSize: number = 1.5
-  myCardSize: number = 1
-
-  readonly breakpoint$ = this.breakpointObserver.observe([
-    Breakpoints.Large,
-    Breakpoints.Medium,
-    Breakpoints.Small,
-    '(min-width: 640px)'
-  ])
-
-  private breakpointChanged() {
-    if (this.breakpointObserver.isMatched('(min-width: 641px)')) {
-      this.centerCardSize = 1.5
-      this.myCardSize = 1
-    } else {
-      this.centerCardSize = 1
-      this.myCardSize = 0.7
-    }
-  }
-
-  constructor(private breakpointObserver: BreakpointObserver) {}
-
   ngOnInit() {
-    this.breakpoint$.subscribe(() => this.breakpointChanged())
-    const playersLength = this.players()?.length > 7 ? 7 : this.players()?.length
+    const playersLength = this.game.players.length > 7 ? 7 : this.game.players.length
     this.playerMap = PLAYER_MAPS[playersLength ?? 0]
     this.socket.on('player:addCards', this.onAddCards.bind(this))
     ;(window as any).room = this.room
@@ -68,6 +44,7 @@ export class GameComponent {
 
   ngOnDestroy() {
     this.socket.off('player:addCards', [this.onAddCards.bind(this)])
+    this.socket.off('game:setJogador', [this.setComprouFalse.bind(this)])
   }
 
   onAddCards() {
@@ -95,9 +72,12 @@ export class GameComponent {
   comprar() {
     this.socket.emit('game:comprar')
     this.game.comprou = true
-    this.socket.on('game:setJogador', () => {
-      this.game.comprou = false
-    })
+    this.socket.on('game:setJogador', this.setComprouFalse.bind(this))
+    // TODO: passar a vez automaticamente
+  }
+
+  setComprouFalse() {
+    this.game.comprou = false
   }
 
   passar() {
@@ -105,15 +85,15 @@ export class GameComponent {
   }
 
   getPlayer(i: number) {
-    return this.players()[this.playerMap![i]]?.player
+    return this.sortedPlayers()[this.playerMap![i]]?.player
   }
 
   getVezDele(i: number) {
-    return this.game.jogadorAtual.id === this.players()[this.playerMap![i]]?.player?.id
+    return this.game.jogadorAtual.id === this.sortedPlayers()[this.playerMap![i]]?.player.id
   }
 
   getQuantidadeCartas(i: number) {
-    const playerIndex = this.players()[this.playerMap![i]]?.index ?? -1
+    const playerIndex = this.sortedPlayers()[this.playerMap![i]]?.index ?? -1
     return this.game.playerCardsCount[playerIndex]
   }
 
@@ -121,6 +101,16 @@ export class GameComponent {
     let players = this.game?.players.map((player, index) => ({ player, index }))
     if (filterMe) players = players.filter((player) => player.player.id !== this.me.id)
     return players
+  }
+
+  sortedPlayers() {
+    if (!this.game) return []
+    const players = this.game.players.map((player, index) => ({ player, index }))
+    const i = players.findIndex((player) => player.player.id === this.me.id)
+    const firstPlayers = players.slice(i + 1)
+    const lastPlayers = players.slice(0, i)
+    const sortedPlayers = firstPlayers.concat(lastPlayers)
+    return sortedPlayers
   }
 
   trackById(index: number, item: ICard) {

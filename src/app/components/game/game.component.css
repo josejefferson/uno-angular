@@ -1,48 +1,35 @@
+::ng-deep body {
+  @apply overflow-hidden;
+}
+
 .game-container {
-  flex: 1;
-  display: flex;
-  overflow: hidden;
+  @apply flex-1 flex overflow-hidden;
 }
 
 .players {
-  width: 200px;
-  padding: 5px;
+  @apply w-[200px] p-[5px];
 }
 
 .main-game {
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  @apply flex-1 p-5 flex items-center justify-center flex-col;
 }
 
 .my-cards-container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  overflow-x: auto;
+  @apply w-full flex justify-center overflow-x-auto;
+  transition: 0.3s ease;
 }
 
 .my-cards-container.disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
+  @apply opacity-50 cursor-not-allowed pointer-events-none translate-y-1/2;
 }
 
 .my-cards-container > .my-cards {
-  max-width: 100%;
-  overflow-x: auto;
-  display: flex;
-  padding: 10px;
+  @apply max-w-full overflow-x-auto flex p-2;
 }
 
 .my-cards-container > .my-cards > .uno-card {
-  display: flex;
-  margin-right: 3px;
+  @apply flex mr-[3px] cursor-pointer;
   transition: 0.1s ease;
-  cursor: pointer;
 }
 
 .my-cards-container:not(.disabled) > .my-cards > .uno-card:hover {
@@ -54,59 +41,44 @@
 }
 
 .my-cards-container:not(.disabled) > .my-cards > .uno-card.naoPode {
-  opacity: 0.6;
-  cursor: not-allowed;
-  pointer-events: none;
+  @apply opacity-60 cursor-not-allowed pointer-events-none;
 }
 
-/* NOVOS ESTILOS */
 .slot {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  @apply w-full h-full flex items-center justify-center text-center;
 }
 
 .slot.empty {
-  display: none;
+  @apply hidden;
 }
 
 ::ng-deep .cards-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
 }
 
 ::ng-deep .slot .name {
-  position: absolute;
-  white-space: nowrap;
+  @apply absolute whitespace-nowrap;
 }
 
 ::ng-deep .slots-top .slot {
-  justify-content: flex-start;
-  flex-direction: column !important;
+  @apply justify-start !flex-col;
 }
 
 ::ng-deep .slots-top .slot .cards-container {
-  width: 100%;
-  height: 50px;
+  @apply w-full h-[50px];
 }
 
 ::ng-deep .slots-left .slot {
-  justify-content: flex-start;
+  @apply justify-start;
 }
 
 ::ng-deep .slots-right .slot {
-  justify-content: flex-start;
-  flex-direction: row-reverse;
+  @apply justify-start flex-row-reverse;
 }
 
 ::ng-deep .slots-left .slot .cards-container,
 ::ng-deep .slots-right .slot .cards-container {
-  width: 50px;
-  height: 100%;
+  @apply w-[50px] h-full;
 }
 
 ::ng-deep .slots-top .slot {
@@ -140,10 +112,8 @@
 }
 
 .game-rotation {
-  @apply w-20;
-  opacity: 0.3;
+  @apply w-20 opacity-30 pointer-events-none;
   animation: rotate 10s linear infinite;
-  pointer-events: none;
 }
 
 .game-rotation.inverted {
@@ -175,9 +145,27 @@
 
 .baralho:not(.disabled):hover .carta-topo,
 .baralho:not(.disabled):focus .carta-topo {
-  @apply -translate-x-2 shadow-2xl cursor-pointer;
+  @apply -translate-x-2 cursor-pointer;
   --tw-translate-y: calc(-50% - 0.5rem);
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate))
     skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x))
     scaleY(var(--tw-scale-y));
+}
+
+.center-card {
+  --size: 1;
+}
+
+.my-card {
+  --size: 0.7;
+}
+
+@media (min-width: 768px) {
+  .center-card {
+    --size: 1.5;
+  }
+
+  .my-card {
+    --size: 1;
+  }
 }

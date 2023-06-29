@@ -1,51 +1,50 @@
 .uno-card-container {
-  width: 2px;
+  @apply w-[2px];
 }
 
 .offline {
-  opacity: 0.6;
+  @apply opacity-60;
 }
 
 .vez {
-  color: yellow;
-  font-size: 20px;
+  @apply text-yellow-400 text-xl;
 }
 
 .slot {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+  @apply w-full h-full flex items-center justify-center text-center;
 }
 
 .slot.empty {
-  display: none;
+  @apply hidden;
+}
+
+.avatar-container {
+  @apply relative;
+}
+
+.avatar-container::before {
+  content: '';
+  @apply bg-yellow-500 rounded-full scale-0 transition-all w-full h-full left-0 top-0 absolute ;
+}
+
+.vez .avatar-container::before {
+  @apply scale-100;
 }
 
 .cards-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  @apply flex items-center justify-center;
 }
 
 .name-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
+  @apply flex items-center justify-center w-[30px] h-[30px];
 }
 
 .cards {
-  position: absolute;
-  display: flex;
-  padding-right: 16px;
+  @apply absolute flex pr-4;
   /* TODO: usar variável para calcular quantidade de cartas e depois o padding-right */
 }
 
 .cards .uno-card-container {
-  width: 20px !important;
+  @apply !w-5;
   /* TODO: usar variável para calcular quantidade de cartas e depois o width */
 }

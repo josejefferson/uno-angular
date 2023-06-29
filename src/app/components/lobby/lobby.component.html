@@ -8,12 +8,14 @@
 
   <div class="players">
     <div
-      class="player bg-{{ seedColor(player.id) }}-900 animate__animated animate__bounceIn"
+      class="player bg-{{ seedColor(player.id) }}-800 border-{{
+        seedColor(player.id)
+      }}-900 animate__animated animate__bounceIn"
+      [class.border-white]="player.id === sessionID"
       [class.owner]="player.id === room.owner"
       [class.opacity-25]="!player.online"
       *ngFor="let player of players"
     >
-      <div class="score" *ngIf="player.score">{{ player.score }}</div>
       <div class="player-name">{{ player.name || '(Sem nome)' }}</div>
       <img
         class="avatar block"
@@ -21,6 +23,8 @@
         alt="Avatar"
       />
       <div class="player-place">{{ player.place }}</div>
+      <div class="score" *ngIf="player.score">{{ player.score }}</div>
+      <div class="you" *ngIf="player.id === sessionID">Você</div>
     </div>
   </div>
 </div>

@@ -35,8 +35,8 @@
             "main": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css"],
+            "assets": ["src/assets"],
+            "styles": ["src/app/styles/index.css"],
             "scripts": [],
             "allowedCommonJsDependencies": ["seedrandom", "debug"]
           },
@@ -81,7 +81,7 @@
           "options": {
             "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": ["src/assets"],
             "styles": ["src/styles.css"],
             "scripts": []
           }

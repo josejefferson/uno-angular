@@ -16,6 +16,7 @@ export class LobbyComponent {
   @Input() me!: Player
   @Input() socket!: Socket
   starting = false
+  sessionID: string = localStorage.getItem('sessionID') || Math.random().toString()
 
   startGame() {
     this.starting = true
