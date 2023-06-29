@@ -135,6 +135,19 @@
   }
 }
 
+.gritar-uno {
+  @apply rounded-full bg-[#ed1c24] flex items-center justify-center w-16 h-16 absolute left-3 top-1/2 -translate-y-1/2;
+  box-shadow: #9d0208 0 8px, black 0 8px 10px;
+  border-bottom: #ffffff80 3px solid;
+  transition: .3s ease;
+}
+
+.gritar-uno:active {
+  border-bottom: transparent 3px solid;
+	box-shadow: #9d0208 0 0, black 0 0 3px;
+	transform: translateY(calc(-50% + 8px));
+}
+
 .baralho .carta-topo {
   @apply absolute right-3 top-1/2 -translate-y-1/2 transition-all;
 }

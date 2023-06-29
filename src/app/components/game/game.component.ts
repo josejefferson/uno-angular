@@ -83,6 +83,10 @@ export class GameComponent {
   passar() {
     this.socket.emit('game:passar')
   }
+  
+  gritarUNO() {
+    this.socket.emit('game:gritarUNO', this.me)
+  }
 
   getPlayer(i: number) {
     return this.sortedPlayers()[this.playerMap![i]]?.player

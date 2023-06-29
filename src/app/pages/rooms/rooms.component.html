@@ -22,7 +22,7 @@
 
       <div class="content bg-{{ seedColor(room.id) }}-800">
         <div class="room-id">#{{ room.id }}</div>
-        <img src="/assets/uno-logo.svg" alt="Logo UNO" class="w-[50px] md:w-[100px] drop-shadow-2xl mx-auto" />
+        <img src="/assets/uno-logo.svg" alt="Logo UNO" class="w-[50px] md:w-[100px] mx-auto" />
         <p class="mt-3">{{ room.players.length }}/∞ jogadores</p>
         <p class="mt-3" *ngIf="room.currentGameIndex !== -1">
           {{ room.currentGameIndex + 1 }}º jogo

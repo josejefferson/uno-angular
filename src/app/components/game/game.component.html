@@ -59,13 +59,18 @@
             }}
           </h1>
 
+          <button class="gritar-uno" (click)="gritarUNO()">
+            <img src="/assets/uno-logo.svg" alt="Logo UNO" class="w-[50px] mx-auto" />
+          </button>
+
           <!-- Descarte -->
           <uno-card [card]="game.descarteUltimaCarta!" class="center-card" />
 
           <!-- Baralho -->
           <div
+            tabindex="0"
             class="baralho"
-            [class.disabled]="game.comprou"
+            [class.disabled]="game.comprou || game.jogadorAtual.id !== me.id"
             [hidden]="game.baralhoCount <= 0"
             (click)="!game.comprou && comprar()"
           >
@@ -104,7 +109,7 @@
               [class.naoPode]="!game.podeJogar(card)"
               *ngFor="let card of me.cards || []; index as i; trackBy: trackById"
             >
-              <uno-card [@zoom] [card]="card" class="my-card" />
+              <uno-card [@zoom] [card]="card" class="my-card" tabindex="0" />
             </div>
           </div>
         </div>
