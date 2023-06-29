@@ -20,6 +20,14 @@
   @apply border-yellow-500 rounded-lg;
 }
 
+.players .player.me {
+  @apply border-white;
+}
+
+.players .player.offline {
+  @apply !opacity-50;
+}
+
 .players .player .player-name {
   @apply text-2xl
 	text-center

@@ -74,7 +74,9 @@ export class RoomComponent {
     this.error = err?.message || err
   }
 
-  connect() {}
+  connect() {
+    this.error = undefined
+  }
 
   disconnect(reason: string) {
     this.toastr.error(reason, 'Conexão perdida, motivo:')

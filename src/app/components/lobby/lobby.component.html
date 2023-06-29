@@ -11,9 +11,9 @@
       class="player bg-{{ seedColor(player.id) }}-800 border-{{
         seedColor(player.id)
       }}-900 animate__animated animate__bounceIn"
-      [class.border-white]="player.id === sessionID"
+      [class.me]="player.id === sessionID"
       [class.owner]="player.id === room.owner"
-      [class.opacity-25]="!player.online"
+      [class.offline]="!player.online"
       *ngFor="let player of players"
     >
       <div class="player-name">{{ player.name || '(Sem nome)' }}</div>

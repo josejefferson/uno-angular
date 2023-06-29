@@ -1,3 +1,20 @@
+.event-screen {
+  @apply fixed
+  left-0
+  top-0
+  w-full
+  h-full
+  flex
+  flex-col
+  items-center
+  justify-center
+  z-10
+  bg-black
+  bg-opacity-80
+  text-center
+  pointer-events-none;
+}
+
 .icon {
   @apply text-9xl;
 }
@@ -11,7 +28,17 @@
 }
 
 .uno-card {
-  @apply w-16 h-24 sm:w-24 sm:h-32 border-4 sm:border-8 rounded-xl sm:rounded-2xl absolute left-1/2 -translate-x-1/2;
+  @apply w-16
+  h-24
+  sm:w-24
+  sm:h-32
+  border-4
+  sm:border-8
+  rounded-xl
+  sm:rounded-2xl
+  absolute
+  left-1/2
+  -translate-x-1/2;
   animation: 1s uno-card-slide 1s ease;
   animation-fill-mode: both;
 }
