@@ -1,27 +1,39 @@
-# Uno
+# UNO | _Front-end Angular_
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.4.
+Front-end em Angular da minha implementação do jogo UNO\
+_(Ainda em desenvolvimento)_
 
-## Development server
+[Back-end disponível aqui](https://github.com/josejefferson/uno-backend)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Funcionalidades
 
-## Code scaffolding
+- Multiplayer online
+- Salas
+- Lobby
+- Avatares
+- Animações
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Tecnologias utilizadas
 
-## Build
+![Angular](https://img.shields.io/badge/angular-%23DD0031.svg?style=for-the-badge&logo=angular&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![DaisyUI](https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+![Socket.io](https://img.shields.io/badge/Socket.io-black?style=for-the-badge&logo=socket.io&badgeColor=010101)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Screenshots
 
-## Running unit tests
+### Tela inicial
+![Tela inicial](https://github.com/josejefferson/uno-angular/assets/52979246/6c4ecfc0-7f40-49c1-b741-86f425d6db5e)
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Salas
+![Salas](https://github.com/josejefferson/uno-angular/assets/52979246/6d70c67e-2147-4f2e-a9f0-05906950fdd6)
 
-## Running end-to-end tests
+### Lobby
+![Lobby](https://github.com/josejefferson/uno-angular/assets/52979246/88e5c636-9714-42ff-b163-a18e6119af40)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Jogo
+![Jogo](https://github.com/josejefferson/uno-angular/assets/52979246/277f26e7-b193-46d1-80d2-f96154254e51)
