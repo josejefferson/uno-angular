@@ -6,10 +6,10 @@ import { IPlayer, Player } from 'src/app/common/player'
 import { IRoom, Room } from 'src/app/common/room'
 import { fadeAnimation } from 'src/app/helpers/animations'
 import { ToastService } from 'src/app/services/toast.service'
-import { env } from 'src/environments/environment'
+import { environment } from 'src/environments/environment'
 
 const socketConfig = (roomID: string, sessionID: string, name: string): SocketIoConfig => ({
-  url: `${env.api}/room/${roomID}?sessionID=${sessionID}&name=${name}`,
+  url: `${environment.api}/room/${roomID}?sessionID=${sessionID}&name=${name}`,
   options: {
     transports: ['websocket'],
     withCredentials: true

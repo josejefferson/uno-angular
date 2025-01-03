@@ -4,14 +4,14 @@ import { BrowserModule } from '@angular/platform-browser'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { SocketIoConfig, SocketIoModule } from 'ngx-socket-io'
 import { ToastrModule } from 'ngx-toastr'
-import { env } from 'src/environments/environment'
+import { environment } from 'src/environments/environment'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { LoadingModule } from './components/loading/loading.module'
 import { UNOEventComponent } from './components/uno-event/uno-event.component'
 
 const socketConfig: SocketIoConfig = {
-  url: env.api + '/',
+  url: environment.api + '/',
   options: {
     transports: ['websocket'],
     withCredentials: true

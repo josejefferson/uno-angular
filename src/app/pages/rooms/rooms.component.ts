@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Component } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import { seedColor } from 'src/app/helpers/seed-color'
-import { env } from 'src/environments/environment'
+import { environment } from 'src/environments/environment'
 
 interface IRoom {
   id: string
@@ -42,7 +42,7 @@ export class RoomsComponent {
 
   getRooms(hideLoading = false) {
     if (!hideLoading) this.loading = true
-    return this.http.get<IRoom[]>(env.api + '/api/room/').subscribe({
+    return this.http.get<IRoom[]>(environment.api + '/api/room/').subscribe({
       next: (value) => (this.rooms = value),
       error: (err) => (this.error = err),
       complete: () => (this.loading = false)
@@ -52,7 +52,7 @@ export class RoomsComponent {
   createRoom() {
     this.creatingRoom = true
     this.http
-      .post(env.api + `/api/room/?sessionID=${this.sessionID}&name=${this.name}`, {})
+      .post(environment.api + `/api/room/?sessionID=${this.sessionID}&name=${this.name}`, {})
       .subscribe({
         next: () => this.getRooms(true),
         error: (err) => alert(err.message),
