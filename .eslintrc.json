@@ -1,0 +1,20 @@
+{
+  "ignorePatterns": ["*.config.*", "dist"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "extends": [
+        "@josejefferson/eslint-config-typescript",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates"
+      ]
+    },
+    {
+      "files": ["*.html"],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended",
+        "plugin:@angular-eslint/template/accessibility"
+      ]
+    }
+  ]
+}

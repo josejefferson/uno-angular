@@ -8,6 +8,7 @@
     "build": "rimraf dist && ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "format": "prettier -w .",
+    "lint": "eslint --ext .ts,.html .",
     "test": "tsc --noEmit"
   },
   "private": true,
@@ -34,16 +35,21 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^16.0.4",
+    "@angular-eslint/eslint-plugin": "^19.0.2",
+    "@angular-eslint/eslint-plugin-template": "^19.0.2",
+    "@angular-eslint/template-parser": "^19.0.2",
     "@angular/cli": "~16.0.4",
     "@angular/compiler-cli": "^16.0.0",
+    "@josejefferson/eslint-config-typescript": "^1.1.0",
     "@types/seedrandom": "^3.0.5",
     "autoprefixer": "^10.4.14",
     "daisyui": "^3.1.6",
+    "eslint": "^8.57.1",
     "postcss": "^8.4.24",
     "postcss-nesting": "^11.3.0",
-    "prettier": "^2.8.8",
+    "prettier": "^3.4.2",
     "rimraf": "^5.0.1",
     "tailwindcss": "^3.3.2",
-    "typescript": "~5.0.2"
+    "typescript": "~5.0.4"
   }
 }

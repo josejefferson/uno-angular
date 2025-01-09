@@ -1,4 +1,4 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core'
+import { Component, ElementRef, Input, ViewChild, OnInit, OnDestroy } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import Game from 'src/app/common/game'
 import { Player } from 'src/app/common/player'
@@ -23,7 +23,7 @@ const PLAYER_MAPS = [
   styleUrls: ['./game.component.css'],
   animations: [zoomAnimation, fadeAnimation()]
 })
-export class GameComponent {
+export class GameComponent implements OnInit, OnDestroy {
   @Input() room!: Room
   @Input() me!: Player
   @Input() socket!: Socket
@@ -83,7 +83,7 @@ export class GameComponent {
   passar() {
     this.socket.emit('game:passar')
   }
-  
+
   gritarUNO() {
     this.socket.emit('game:gritarUNO', this.me)
   }
@@ -123,9 +123,9 @@ export class GameComponent {
 
   fullscreen() {
     if (document.fullscreenElement) {
-      document.exitFullscreen()
+      void document.exitFullscreen()
     } else {
-      document.documentElement.requestFullscreen()
+      void document.documentElement.requestFullscreen()
     }
   }
 }

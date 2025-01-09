@@ -58,11 +58,11 @@ export class Room extends EventEmitter2 {
       deserialize<Game>(game, Game) ?? new Game({ /*seed:this.seed,*/ players: this.players })
     this.emit('room:startGame', this.currentGame)
     inheritEvents(this, this.currentGame)
-    if (typeof window === 'undefined') this.currentGame!.comeca()
+    if (typeof window === 'undefined') this.currentGame.comeca()
     this.started = true
     this.currentGameIndex++
 
-    this.currentGame!.on('endGame', (ganhador: number) => {
+    this.currentGame.on('endGame', (ganhador: number) => {
       this.endGame(ganhador)
     })
     // for (const player of this.players) {

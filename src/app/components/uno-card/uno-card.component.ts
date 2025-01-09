@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core'
+import { Component, Input, OnInit, OnChanges } from '@angular/core'
 import { ICard } from 'src/app/types/cards'
 
 const ICONS: any = {
@@ -16,7 +16,7 @@ const COLORS = ['red', 'yellow', 'blue', 'green'] as const
   templateUrl: './uno-card.component.html',
   styleUrls: ['./uno-card.component.css']
 })
-export class UnoCardComponent {
+export class UnoCardComponent implements OnInit, OnChanges {
   @Input() back = false
   @Input() size?: number
   @Input() card!: ICard

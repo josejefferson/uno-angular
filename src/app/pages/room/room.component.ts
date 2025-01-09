@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
 import { ActivatedRoute } from '@angular/router'
 import { Socket, SocketIoConfig } from 'ngx-socket-io'
 import { ToastrService } from 'ngx-toastr'
@@ -22,7 +22,7 @@ const socketConfig = (roomID: string, sessionID: string, name: string): SocketIo
   styleUrls: ['./room.component.css'],
   animations: [fadeAnimation()]
 })
-export class RoomComponent {
+export class RoomComponent implements OnDestroy {
   socket: Socket
   error?: string
   me = new Player({ id: '', name: 'Jogador' })

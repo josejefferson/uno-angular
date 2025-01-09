@@ -37,7 +37,7 @@ export class LobbyComponent {
       ...new Set(sortedPlayers.map((player) => player.score).filter((score) => score > 0))
     ]
 
-    const PLACES: any = { [1]: '🥇', [2]: '🥈', [3]: '🥉' }
+    const PLACES: any = { 1: '🥇', 2: '🥈', 3: '🥉' }
 
     const players = sortedPlayers.map((player: any) => {
       const rawPlace = places.indexOf(player.score) + 1

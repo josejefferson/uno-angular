@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http'
-import { Component } from '@angular/core'
+import { Component, OnDestroy } from '@angular/core'
 import { Socket } from 'ngx-socket-io'
 import { seedColor } from 'src/app/helpers/seed-color'
 import { environment } from 'src/environments/environment'
@@ -19,7 +19,7 @@ interface IRoom {
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent {
+export class RoomsComponent implements OnDestroy {
   seedColor = seedColor
 
   name: string = localStorage.getItem('name') || ''

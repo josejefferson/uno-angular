@@ -10,12 +10,12 @@ export function inheritEvents(a: EventEmitter2, b: EventEmitter2) {
   })
 }
 
-export function deserialize<T = any>(object: any | null, classe: { new (obj: any): any }): T {
+export function deserialize<T = any>(object: any, Classe: { new (obj: any): any }): T {
   if (!object) return object
   if (Array.isArray(object)) {
-    return object.map((object) => deserialize(object, classe)) as any
+    return object.map((object) => deserialize(object, Classe)) as any
   }
 
-  if (object instanceof classe) return object
-  return new classe(object)
+  if (object instanceof Classe) return object
+  return new Classe(object)
 }

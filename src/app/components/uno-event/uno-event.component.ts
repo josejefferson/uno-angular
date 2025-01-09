@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { fadeAnimation } from 'src/app/helpers/animations'
 import { ToastService } from 'src/app/services/toast.service'
 
@@ -8,7 +8,7 @@ import { ToastService } from 'src/app/services/toast.service'
   styleUrls: ['./uno-event.component.css'],
   animations: [fadeAnimation()]
 })
-export class UNOEventComponent {
+export class UNOEventComponent implements OnInit {
   message: string | null = null
   timer?: NodeJS.Timeout
 
